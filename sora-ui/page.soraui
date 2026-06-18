@@ -1,0 +1,21 @@
+{
+  "theme": "OrangeDark",
+  "tabs": [
+    { "id": "tab1", "title": "ホーム" },
+    { "id": "tab2", "title": "設定" }
+  ],
+  "components": [
+    {
+      "type": "section",
+      "tab": "tab1",
+      "title": "プロフィール",
+      "children": [
+        {
+          "type": "button",
+          "title": "公式サイトへ",
+          "action": { "type": "link", "url": "https://example.com" }
+        }
+      ]
+    }
+  ]
+}
