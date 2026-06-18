@@ -1,21 +1,41 @@
 {
   "theme": "OrangeDark",
-  "tabs": [
-    { "id": "tab1", "title": "ホーム" },
-    { "id": "tab2", "title": "設定" }
+  "mode": "Docs",
+
+  "sidebar": [
+    {
+      "id": "guide",
+      "title": "ガイド",
+      "icon": "📘",
+      "pages": [
+        { "id": "intro", "title": "はじめに", "icon": "🚀" },
+        { "id": "install", "title": "インストール", "icon": "⚙️" }
+      ]
+    },
+    {
+      "id": "api",
+      "title": "APIリファレンス",
+      "icon": "icons/api.svg",
+      "pages": [
+        { "id": "button-api", "title": "Button", "icon": "🔘" }
+      ]
+    }
   ],
+
   "components": [
     {
       "type": "section",
-      "tab": "tab1",
-      "title": "プロフィール",
+      "page": "intro",
+      "title": "はじめに",
       "children": [
-        {
-          "type": "button",
-          "title": "公式サイトへ",
-          "action": { "type": "link", "url": "https://example.com" }
-        }
+        { "type": "button", "title": "公式サイトへ", "action": { "type": "link", "url": "https://example.com" } }
       ]
+    },
+    {
+      "type": "section",
+      "page": "install",
+      "title": "インストール手順",
+      "children": []
     }
   ]
 }
