@@ -174,6 +174,101 @@
         border: 1px solid #d64545;
         border-radius: 8px;
       }
+
+      /* ---- Docs mode ---- */
+      .ui-docs {
+        display: flex;
+        align-items: flex-start;
+        gap: 0;
+        padding: 0;
+      }
+
+      .ui-docs-sidebar {
+        width: 240px;
+        flex-shrink: 0;
+        background: var(--ui-surface);
+        border-right: 1px solid var(--ui-border);
+        padding: 20px 12px;
+        min-height: 100vh;
+        box-sizing: border-box;
+      }
+
+      .ui-docs-content {
+        flex: 1;
+        padding: 32px 40px;
+        min-width: 0;
+      }
+
+      .ui-docs-category {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--ui-textMuted);
+        padding: 6px 10px;
+        margin: 16px 0 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+
+      .ui-docs-category:first-child {
+        margin-top: 0;
+      }
+
+      .ui-docs-icon {
+        width: 16px;
+        height: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+
+      .ui-docs-icon img {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+      }
+
+      .ui-docs-page {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: var(--ui-text);
+        padding: 8px 10px 8px 26px;
+        border-radius: 6px;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.12s ease, color 0.12s ease;
+      }
+
+      .ui-docs-page:hover {
+        background: var(--ui-border);
+      }
+
+      .ui-docs-page.is-active {
+        background: var(--ui-primary);
+        color: #ffffff;
+        font-weight: 600;
+      }
+
+      .ui-docs-panel {
+        display: none;
+      }
+
+      .ui-docs-panel.is-active {
+        display: block;
+      }
+
+      .ui-docs-panel-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0 0 20px 0;
+        color: var(--ui-text);
+      }
     `;
 
     const styleTag = document.createElement("style");
@@ -185,6 +280,29 @@
   /* ============================================================
    * 3. コンポーネント生成（JSON -> DOM）
    * ============================================================ */
+
+  // icon文字列が画像URLっぽいかどうかを判定して、適切な要素を作る
+  // 例: "icon.svg", "https://.../icon.png" -> <img>
+  //     "📘", "API" のような短い文字列 -> そのままテキスト
+  function createIconElement(icon) {
+    if (!icon) return null;
+
+    const looksLikeImage = /\.(svg|png|jpe?g|gif|webp)$/i.test(icon) || /^https?:\/\//.test(icon);
+
+    const span = document.createElement("span");
+    span.className = "ui-docs-icon";
+
+    if (looksLikeImage) {
+      const img = document.createElement("img");
+      img.src = icon;
+      img.alt = "";
+      span.appendChild(img);
+    } else {
+      span.textContent = icon;
+    }
+
+    return span;
+  }
 
   // type: "button" の要素を作る
   function createButton(def) {
@@ -305,6 +423,103 @@
   }
 
   /* ============================================================
+   * 4.5 Docsモードの描画
+   *    sidebar定義から「カテゴリ -> ページ」の1階層サイドバーを作り、
+   *    componentsをpage idごとに振り分けて右側に表示する
+   * ============================================================ */
+  function renderDocs(root, data) {
+    const sidebarDef = data.sidebar || [];
+    const components = data.components || [];
+
+    root.classList.add("ui-docs");
+
+    const sidebar = document.createElement("nav");
+    sidebar.className = "ui-docs-sidebar";
+
+    const content = document.createElement("div");
+    content.className = "ui-docs-content";
+
+    const panels = {};
+    let firstPageId = null;
+
+    sidebarDef.forEach((category) => {
+      // カテゴリ見出し
+      const catEl = document.createElement("div");
+      catEl.className = "ui-docs-category";
+
+      const catIcon = createIconElement(category.icon);
+      if (catIcon) catEl.appendChild(catIcon);
+
+      const catLabel = document.createElement("span");
+      catLabel.textContent = category.title || category.id;
+      catEl.appendChild(catLabel);
+
+      sidebar.appendChild(catEl);
+
+      // カテゴリ内の各ページ
+      (category.pages || []).forEach((page) => {
+        if (!firstPageId) firstPageId = page.id;
+
+        const pageEl = document.createElement("div");
+        pageEl.className = "ui-docs-page";
+        pageEl.dataset.pageId = page.id;
+
+        const pageIcon = createIconElement(page.icon);
+        if (pageIcon) pageEl.appendChild(pageIcon);
+
+        const pageLabel = document.createElement("span");
+        pageLabel.textContent = page.title || page.id;
+        pageEl.appendChild(pageLabel);
+
+        pageEl.addEventListener("click", () => {
+          sidebar.querySelectorAll(".ui-docs-page").forEach((el) => el.classList.remove("is-active"));
+          Object.values(panels).forEach((panel) => panel.classList.remove("is-active"));
+
+          pageEl.classList.add("is-active");
+          if (panels[page.id]) panels[page.id].classList.add("is-active");
+        });
+
+        sidebar.appendChild(pageEl);
+
+        // このページ用のコンテンツパネル
+        const panel = document.createElement("div");
+        panel.className = "ui-docs-panel";
+        panel.dataset.pageId = page.id;
+
+        if (page.title) {
+          const h = document.createElement("h1");
+          h.className = "ui-docs-panel-title";
+          h.textContent = page.title;
+          panel.appendChild(h);
+        }
+
+        panels[page.id] = panel;
+        content.appendChild(panel);
+      });
+    });
+
+    // 最初のページをアクティブにする
+    if (firstPageId) {
+      const firstPageEl = sidebar.querySelector(`.ui-docs-page[data-page-id="${firstPageId}"]`);
+      if (firstPageEl) firstPageEl.classList.add("is-active");
+      if (panels[firstPageId]) panels[firstPageId].classList.add("is-active");
+    }
+
+    // componentsを、それぞれの page プロパティが指すパネルに振り分ける
+    components.forEach((c) => {
+      const el = createComponent(c);
+      if (!el) return;
+
+      const targetPanel = c.page && panels[c.page] ? panels[c.page] : panels[firstPageId];
+      if (targetPanel) targetPanel.appendChild(el);
+    });
+
+    root.appendChild(sidebar);
+    root.appendChild(content);
+  }
+
+
+  /* ============================================================
    * 5. エラー表示（.sorauiの読み込み・JSON解析に失敗した場合）
    * ============================================================ */
   function renderError(root, message) {
@@ -315,8 +530,29 @@
   }
 
   /* ============================================================
-   * 6. 起動処理
-   *    data-soraui-src を持つ要素をすべて見つけて読み込む
+   * 6. 描画の共通処理
+   *    data（JSオブジェクト）を受け取って、rootに描画する。
+   *    .sorauiファイルから読んだ場合も、Firestoreなど外部データから
+   *    その場で組み立てた場合も、最終的にここを通る。
+   * ============================================================ */
+  function renderData(root, data) {
+    root.innerHTML = "";
+    root.classList.remove("ui-docs");
+
+    injectStyles(data.theme);
+    root.classList.add("ui-root");
+
+    if (data.mode === "Docs") {
+      renderDocs(root, data);
+    } else {
+      renderTabs(root, data);
+    }
+  }
+
+  /* ============================================================
+   * 7. 起動処理（ファイル読み込みルート）
+   *    data-soraui-src を持つ要素をすべて見つけて、
+   *    指定された .soraui (JSON) を fetch して描画する
    * ============================================================ */
   async function mountElement(root) {
     const src = root.dataset.sorauiSrc;
@@ -329,11 +565,33 @@
       }
 
       const data = await res.json();
-
-      injectStyles(data.theme);
+      renderData(root, data);
+    } catch (err) {
+      injectStyles(DEFAULT_THEME);
       root.classList.add("ui-root");
+      renderError(root, err.message);
+      console.error("[Sora UI]", err);
+    }
+  }
 
-      renderTabs(root, data);
+  /* ============================================================
+   * 8. 外部APIルート（JSオブジェクトを直接渡して描画したい場合）
+   *    例:
+   *      const data = await fetch("/api/page-data").then(r => r.json());
+   *      SoraUI.render("#app", data);
+   *
+   *    data の形式は .soraui ファイルの中身（JSON）と全く同じ。
+   *    ファイルを経由せず、その場で組み立てたオブジェクトをそのまま渡せる。
+   * ============================================================ */
+  function render(target, data) {
+    const root = typeof target === "string" ? document.querySelector(target) : target;
+    if (!root) {
+      console.error(`[Sora UI] render() の対象要素が見つかりません: "${target}"`);
+      return;
+    }
+
+    try {
+      renderData(root, data);
     } catch (err) {
       injectStyles(DEFAULT_THEME);
       root.classList.add("ui-root");
@@ -353,6 +611,8 @@
     init();
   }
 
-  // 必要であれば外部から再実行できるように公開しておく
-  window.SoraUI = { reload: init };
+  // 外部から使えるAPI
+  //   SoraUI.reload()             -> data-soraui-src を持つ要素を再読み込み
+  //   SoraUI.render(target, data) -> JSオブジェクトを直接渡して描画
+  window.SoraUI = { reload: init, render: render };
 })();

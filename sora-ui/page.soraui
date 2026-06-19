@@ -1,41 +1,54 @@
 {
   "theme": "OrangeDark",
-  "mode": "Docs",
 
-  "sidebar": [
-    {
-      "id": "guide",
-      "title": "ガイド",
-      "icon": "📘",
-      "pages": [
-        { "id": "intro", "title": "はじめに", "icon": "🚀" },
-        { "id": "install", "title": "インストール", "icon": "⚙️" }
-      ]
-    },
-    {
-      "id": "api",
-      "title": "APIリファレンス",
-      "icon": "icons/api.svg",
-      "pages": [
-        { "id": "button-api", "title": "Button", "icon": "🔘" }
-      ]
-    }
+  "tabs": [
+    { "id": "home", "title": "ホーム" },
+    { "id": "settings", "title": "設定" }
   ],
 
   "components": [
     {
       "type": "section",
-      "page": "intro",
-      "title": "はじめに",
+      "tab": "home",
+      "title": "プロフィール",
       "children": [
-        { "type": "button", "title": "公式サイトへ", "action": { "type": "link", "url": "https://example.com" } }
+        {
+          "type": "button",
+          "title": "公式サイトへ",
+          "color": "primary",
+          "action": { "type": "link", "url": "https://www.anthropic.com" }
+        },
+        {
+          "type": "button",
+          "title": "キャンセル",
+          "color": "secondary"
+        }
       ]
     },
     {
       "type": "section",
-      "page": "install",
-      "title": "インストール手順",
-      "children": []
+      "tab": "home",
+      "title": "お知らせ",
+      "children": [
+        {
+          "type": "button",
+          "title": "詳しく見る",
+          "color": "primary",
+          "action": { "type": "link", "url": "https://example.com/news" }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tab": "settings",
+      "title": "アカウント設定",
+      "children": [
+        {
+          "type": "button",
+          "title": "ログアウト",
+          "color": "secondary"
+        }
+      ]
     }
   ]
 }
