@@ -60,7 +60,14 @@
           "type": "insection",
           "radius": 12,
           "children": [
-            { "type": "text", "title": "いいね", "body": "9,310" }
+            { "type": "text", "title": "簡単なコード", "body": "コードが簡単に組めます。" }
+          ]
+        }
+        {
+          "type": "insection",
+          "radius": 12,
+          "children": [
+            { "type": "text", "title": "デザイン", "body": "とてもきれいなデザインで、きれいです。" }
           ]
         }
       ]
