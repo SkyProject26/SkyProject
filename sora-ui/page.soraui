@@ -78,8 +78,41 @@
     {
       "type": "imagesection",
       "tab": "home",
-      "height": 180,
-      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800"
+      "height": 220,
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+      "position": "bottom-left",
+      "children": [
+        {
+          "type": "text",
+          "title": "新着情報",
+          "titleSize": 26,
+          "description": "今週のアップデートをチェック"
+        },
+        {
+          "type": "button",
+          "title": "詳しく見る",
+          "color": "primary",
+          "action": { "type": "link", "url": "https://example.com/news" }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tab": "home",
+      "title": "ui-image の例",
+      "children": [
+        {
+          "type": "image",
+          "src": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400",
+          "width": 240,
+          "position": "center"
+        },
+        {
+          "type": "text",
+          "body": "ui-image は section の中に好きな位置で画像を置けます。",
+          "bodySize": 13
+        }
+      ]
     },
     {
       "type": "section",

@@ -147,7 +147,7 @@
       }
 
       .ui-page-body {
-        padding: 24px;
+        padding: 0;
       }
 
       /* ---- Titlebar ---- */
@@ -285,15 +285,27 @@
         display: block;
       }
 
-      /* ---- Section ---- */
+      /* ---- Section ----
+         画面幅ジャストの帯状ブロック。角丸なし、Section同士の間隔はゼロ。
+         左右の余白は内側の padding で確保する（外枠は画面端まで届く） */
       .ui-section {
+        width: 100%;
         background: var(--ui-surface);
-        border: 1px solid var(--ui-border);
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 16px;
+        border-top: 1px solid var(--ui-border);
+        border-bottom: 1px solid var(--ui-border);
+        padding: 28px 32px;
         display: flex;
         flex-direction: column;
+        box-sizing: border-box;
+      }
+
+      /* 連続するSection同士は二重線にならないよう、上のボーダーを重ねて消す */
+      .ui-section + .ui-section,
+      .ui-section + .ui-imagesection,
+      .ui-imagesection + .ui-section,
+      .ui-imagesection + .ui-imagesection {
+        border-top: none;
+        margin-top: -1px;
       }
 
       .ui-section-title {
@@ -311,13 +323,16 @@
         overflow: auto;
       }
 
-      /* ---- Image Section ---- */
+      /* ---- Image Section ----
+         画面幅ジャスト。children を画像の上に重ねて配置できる */
       .ui-imagesection {
-        border-radius: 12px;
+        width: 100%;
+        position: relative;
         overflow: hidden;
-        margin-bottom: 16px;
         background: var(--ui-surface);
-        border: 1px solid var(--ui-border);
+        border-top: 1px solid var(--ui-border);
+        border-bottom: 1px solid var(--ui-border);
+        box-sizing: border-box;
       }
 
       .ui-imagesection img {
@@ -327,7 +342,39 @@
         display: block;
       }
 
-      /* ---- InSection ---- */
+      .ui-imagesection-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 24px 32px;
+        box-sizing: border-box;
+      }
+
+      /* 文字や背景のないボタン等が写真に埋もれないよう、薄い影をデフォルトで付ける */
+      .ui-imagesection-overlay .ui-text-title,
+      .ui-imagesection-overlay .ui-text-description,
+      .ui-imagesection-overlay .ui-text-body {
+        color: #ffffff;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      /* ---- Image (section内に置く単体の画像) ---- */
+      .ui-image-wrap {
+        display: flex;
+        max-width: 100%;
+      }
+
+      .ui-image-wrap img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+      }
+
+      /* ---- InSection ----
+         section内の独立した区切り。こちらは角丸カード型を維持 */
       .ui-insection-row {
         display: flex;
         gap: 10px;
@@ -839,6 +886,11 @@
     el.style.alignItems = map.align;
   }
 
+  // 数値が来たら px を付け、文字列(例: "1.5rem")はそのまま使う
+  function toCssSize(value) {
+    return typeof value === "number" ? `${value}px` : value;
+  }
+
   /* ============================================================
    * 6. アクションの実行（ui-button の action）
    *    type: link / external / switchTab / toggleSection / copy / scrollTo
@@ -903,27 +955,34 @@
   }
 
   // type: "text"
+  // type: "text"
+  // プリセット: title(大) / description(小・薄) / body(本文)
+  // カスタムサイズ: titleSize / descriptionSize / bodySize を数値(px)で指定すると上書きできる
   function createText(def) {
     const wrap = document.createElement("div");
     wrap.className = "ui-text-block";
     if (def.id) wrap.id = def.id;
+    applyPosition(wrap, def.position);
 
     if (def.title) {
       const h = document.createElement("h3");
       h.className = "ui-text-title";
       h.textContent = def.title;
+      if (def.titleSize) h.style.fontSize = toCssSize(def.titleSize);
       wrap.appendChild(h);
     }
     if (def.description) {
       const p = document.createElement("p");
       p.className = "ui-text-description";
       p.textContent = def.description;
+      if (def.descriptionSize) p.style.fontSize = toCssSize(def.descriptionSize);
       wrap.appendChild(p);
     }
     if (def.body) {
       const p = document.createElement("p");
       p.className = "ui-text-body";
       p.textContent = def.body;
+      if (def.bodySize) p.style.fontSize = toCssSize(def.bodySize);
       wrap.appendChild(p);
     }
     return wrap;
@@ -1019,17 +1078,49 @@
   }
 
   // type: "imagesection"
-  function createImageSection(def) {
+  // children を指定すると、画像の上に重ねて表示する（見出し・ボタンなどを置けるヒーロー的な使い方）
+  function createImageSection(def, ctx) {
     const wrap = document.createElement("div");
     wrap.className = "ui-imagesection";
     if (def.id) wrap.id = def.id;
-    if (def.height) wrap.style.height = typeof def.height === "number" ? `${def.height}px` : def.height;
+    if (def.height) wrap.style.height = toCssSize(def.height);
 
     const img = document.createElement("img");
     img.src = def.image || "";
     img.alt = def.title || "";
     wrap.appendChild(img);
 
+    if (Array.isArray(def.children) && def.children.length > 0) {
+      const overlay = document.createElement("div");
+      overlay.className = "ui-imagesection-overlay";
+      applyPosition(overlay, def.position);
+
+      def.children.forEach((child) => {
+        const childEl = createComponent(child, ctx);
+        if (childEl) overlay.appendChild(childEl);
+      });
+
+      wrap.appendChild(overlay);
+    }
+
+    return wrap;
+  }
+
+  // type: "image"
+  // section の中などに置く単体の画像。position で section 内の配置を指定できる
+  function createImage(def) {
+    const wrap = document.createElement("div");
+    wrap.className = "ui-image-wrap";
+    if (def.id) wrap.id = def.id;
+    applyPosition(wrap, def.position);
+
+    const img = document.createElement("img");
+    img.src = def.src || def.image || "";
+    img.alt = def.alt || "";
+    if (def.width) img.style.width = toCssSize(def.width);
+    if (def.height) img.style.height = toCssSize(def.height);
+
+    wrap.appendChild(img);
     return wrap;
   }
 
@@ -1056,7 +1147,7 @@
     const wrap = document.createElement("section");
     wrap.className = "ui-section";
     if (def.id) wrap.id = def.id;
-    if (def.height) wrap.style.height = typeof def.height === "number" ? `${def.height}px` : def.height;
+    if (def.height) wrap.style.height = toCssSize(def.height);
 
     if (def.title) {
       const h = document.createElement("h3");
@@ -1102,7 +1193,9 @@
       case "section":
         return createSection(def, ctx);
       case "imagesection":
-        return createImageSection(def);
+        return createImageSection(def, ctx);
+      case "image":
+        return createImage(def);
       case "insection":
         return createInSection(def, ctx);
       case "text":
