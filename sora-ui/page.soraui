@@ -1,7 +1,7 @@
 {
   "font": "Google Sans",
-  "theme": "darkblue",
-  "mode": "Docs",
+  "theme": "darkorange",
+  "mode": "page",
 
   "titlebar": {
     "title": "Sora UI | UI Script Language",
