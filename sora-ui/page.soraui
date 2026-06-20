@@ -1,11 +1,11 @@
 {
-  "font": "Noto Sans JP",
-  "theme": "darkblue",
-  "mode": "page",
+  "font": "Google Sans",
+  "theme": "darkorage",
+  "mode": "Docs",
 
   "titlebar": {
-    "title": "Sora App",
-    "icon": "🪐"
+    "title": "Sora UI | UI Script Language",
+    "icon": "icon.svg"
   },
 
   "tabs": [
