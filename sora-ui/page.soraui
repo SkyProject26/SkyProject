@@ -17,14 +17,14 @@
   	{
       "type": "imagesection",
       "tab": "home",
-      "height": 700,
+      "height": 800,
       "image": "sky.png",
       "position": "bottom-left",
       "children": [
         {
           "type": "text",
           "title": "Sora UI Guide",
-          "titleSize": 26,
+          "titleSize": 22,
           "description": "使い方を見る"
         },
         {
