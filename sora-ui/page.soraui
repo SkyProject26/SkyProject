@@ -1,52 +1,141 @@
 {
-  "theme": "OrangeDark",
+  "font": "Noto Sans JP",
+  "theme": "darkblue",
+  "mode": "page",
+
+  "titlebar": {
+    "title": "Sora App",
+    "icon": "🪐"
+  },
 
   "tabs": [
     { "id": "home", "title": "ホーム" },
-    { "id": "settings", "title": "設定" }
+    { "id": "guide", "title": "ガイド" }
   ],
 
   "components": [
     {
       "type": "section",
       "tab": "home",
+      "id": "profile-section",
       "title": "プロフィール",
+      "height": 220,
       "children": [
         {
-          "type": "button",
-          "title": "公式サイトへ",
-          "color": "primary",
-          "action": { "type": "link", "url": "https://www.anthropic.com" }
+          "type": "insection",
+          "radius": 12,
+          "children": [
+            { "type": "text", "title": "フォロワー", "body": "1,204" }
+          ]
         },
         {
-          "type": "button",
-          "title": "キャンセル",
-          "color": "secondary"
+          "type": "insection",
+          "radius": 12,
+          "children": [
+            { "type": "text", "title": "投稿数", "body": "58" }
+          ]
+        },
+        {
+          "type": "insection",
+          "radius": 12,
+          "children": [
+            { "type": "text", "title": "いいね", "body": "9,310" }
+          ]
         }
       ]
     },
     {
       "type": "section",
       "tab": "home",
-      "title": "お知らせ",
+      "title": "アクション",
       "children": [
         {
           "type": "button",
-          "title": "詳しく見る",
+          "title": "公式サイトへ",
           "color": "primary",
-          "action": { "type": "link", "url": "https://example.com/news" }
+          "action": { "type": "link", "url": "https://example.com" }
+        },
+        {
+          "type": "button",
+          "title": "外部リンク（新規タブ）",
+          "color": "secondary",
+          "action": { "type": "external", "url": "https://example.com" }
+        },
+        {
+          "type": "button",
+          "title": "ガイドタブへ",
+          "color": "secondary",
+          "action": { "type": "switchTab", "target": "guide" }
+        },
+        {
+          "type": "button",
+          "title": "コードをコピー",
+          "color": "secondary",
+          "action": { "type": "copy", "text": "npm install sora-ui" }
+        }
+      ]
+    },
+    {
+      "type": "imagesection",
+      "tab": "home",
+      "height": 180,
+      "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800"
+    },
+    {
+      "type": "section",
+      "tab": "guide",
+      "title": "インストール方法",
+      "children": [
+        {
+          "type": "codespace",
+          "language": "bash",
+          "code": "npm install sora-ui\nnpx sora-ui init"
         }
       ]
     },
     {
       "type": "section",
-      "tab": "settings",
-      "title": "アカウント設定",
+      "tab": "guide",
+      "title": "もっと詳しく",
       "children": [
         {
-          "type": "button",
-          "title": "ログアウト",
-          "color": "secondary"
+          "type": "text",
+          "title": "Sora UIについて",
+          "description": "JSON一つでUIを組み立てるライブラリ",
+          "body": "sora-ui.js は編集不要。page.soraui を書き換えるだけでUIが変わります。"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tab": "guide",
+      "title": "コンポーネント一覧",
+      "children": [
+        {
+          "type": "table",
+          "columns": ["タグ", "説明"],
+          "rows": [
+            ["ui-section", "テーマカラーの四角"],
+            ["ui-button", "6種類のactionを持つボタン"],
+            ["ui-table", "表形式のデータ表示"],
+            ["ui-list", "順序付き/順序なしリスト"]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "tab": "guide",
+      "title": "セットアップ手順",
+      "children": [
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "index.html を作成する",
+            "sora-ui.js を読み込む",
+            "page.soraui を編集する"
+          ]
         }
       ]
     }
