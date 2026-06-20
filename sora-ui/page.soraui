@@ -4,7 +4,7 @@
   "mode": "page",
 
   "titlebar": {
-    "title": "Sora UI | UI Script Language",
+    "title": "Sora UI",
     "icon": "icon.svg"
   },
 
@@ -17,21 +17,21 @@
   	{
       "type": "imagesection",
       "tab": "home",
-      "height": 500,
+      "height": 700,
       "image": "sky.png",
       "position": "bottom-left",
       "children": [
         {
           "type": "text",
-          "title": "新着情報",
+          "title": "Sora UI Guide",
           "titleSize": 26,
-          "description": "今週のアップデートをチェック"
+          "description": "使い方を見る"
         },
         {
           "type": "button",
-          "title": "詳しく見る",
+          "title": "ガイドタブへ",
           "color": "primary",
-          "action": { "type": "link", "url": "https://example.com/news" }
+          "action": { "type": "switchTab", "target": "guide" }
         }
       ]
     },
@@ -39,21 +39,21 @@
       "type": "section",
       "tab": "home",
       "id": "profile-section",
-      "title": "プロフィール",
-      "height": 220,
+      "title": "SoraUIを使う理由",
+      "height": 240,
       "children": [
         {
           "type": "insection",
           "radius": 12,
           "children": [
-            { "type": "text", "title": "フォロワー", "body": "1,204" }
+            { "type": "text", "title": "超軽量", "body": "超軽量で低スペックなPCでも即表示できます!" }
           ]
         },
         {
           "type": "insection",
           "radius": 12,
           "children": [
-            { "type": "text", "title": "投稿数", "body": "58" }
+            { "type": "text", "title": "カスタマイズ性", "body": "テーマカラーなど様々なカスタマイズがあります!" }
           ]
         },
         {
