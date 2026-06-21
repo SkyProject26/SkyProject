@@ -53,21 +53,21 @@
         },
         {
           "type": "insection",
-          "radius": 20
+          "radius": 20,
           "children": [
             { "type": "text", "title": "30+", "titleSize": 30, "body": "パートナー" }
           ]
         },
         {
           "type": "insection",
-          "radius": 20
+          "radius": 20,
           "children": [
             { "type": "text", "title": "100%", "titleSize": 30, "body": "情熱" }
           ]
         },
         {
           "type": "insection",
-          "radius": 20
+          "radius": 20,
           "children": [
             { "type": "text", "title": "∞", "titleSize": 30, "body": "可能性" }
           ]
