@@ -14,14 +14,10 @@
       "height": 700,
       "image": "sky.png"
       "children": [
-        {
-          "type": "button",
-          "title": "私たちのプロダクトを見る",
-          "color": "primary",
-          "action": {
-            "type": "link",
-            "url": "https://sky-project-web.vercel.app/product/index.html"
-          }
+        "children": [
+        { "type": "text", "title": "私たちのプロダクト" },
+        { "type": "button", "title": "詳しく見る, "color": "primary", "action": {"type": "link", "url": "https://sky-project-web.vercel.app/product/index.html"}" }
+      ]
 
     },
 
