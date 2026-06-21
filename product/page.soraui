@@ -48,7 +48,7 @@
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "Sky Scripts"titleSize": 30, "body": "プロジェクト" }
+            { "type": "text", "title": "Sky Scripts", "titleSize": 30, "body": "プロジェクト" }
           ]
         },
         {
