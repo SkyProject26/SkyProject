@@ -30,14 +30,14 @@
     },
     {
       "type": "section",
-      "height": 150,
+      "height": 300,
       "position": "bottom-center",
       "children": [
         {
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "Sky Scripts", "titleSize": 30, "body": "RobloxのスクリプトやExecuterがあります。" },
+            { "type": "text", "title": "Sky Scripts", "titleSize": 30, "body": "RobloxのスクリプトやExecuterがあります。安全性は保証されません。" },
             { "type": "button", "title": "サイトへ行く", "color": "primary", "action": {"type": "link", "url": "https://sky-project-web.vercel.app/product/sky-scripts/index.html"}}
           ]
         },
@@ -45,7 +45,7 @@
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "Sky Games", "titleSize": 30, "body": "すべてのゲームを無料で。" },
+            { "type": "text", "title": "Sky Games", "titleSize": 30, "body": "すべてのゲームを無料でダウンロード、プレイができます。" },
             { "type": "button", "title": "サイトへ行く", "color": "primary", "action": {"type": "link", "url": "https://sky-project-web.vercel.app/product/sky-games/index.html"}}
 
           ]
