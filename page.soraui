@@ -1,6 +1,6 @@
 {
   "theme": "darkorange",
-  "font": "Inter",
+  "font": "Google Sans",
   "mode": "page",
 
   "titlebar": {
@@ -11,7 +11,7 @@
   "components": [
     {
       "type": "imagesection",
-      "height": 360,
+      "height": 560,
       "image": "sky.png"
     },
 
