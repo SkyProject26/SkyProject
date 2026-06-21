@@ -12,7 +12,7 @@
     {
       "type": "imagesection",
       "height": 700,
-      "image": "sky.png"
+      "image": "sky.png",
       "children": [
         "children": [
         { "type": "text", "title": "私たちのプロダクト" },
