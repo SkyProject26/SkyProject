@@ -1,0 +1,134 @@
+{
+  "theme": "darkorange",
+  "font": "Google Sans",
+  "mode": "page",
+
+  "titlebar": {
+    "title": "Sky Project",
+    "icon": "icon.svg"
+  },
+
+  "components": [
+    {
+      "type": "imagesection",
+      "height": 700,
+      "image": "sky.png"
+      "children": [
+          {
+          "type": "button",
+          "title": "私たちのプロダクトを見る",
+          "color": "primary",
+          "action": {
+            "type": "link",
+            "url": "https://sky-project-web.vercel.app/product/index.html"
+          }
+
+    },
+
+    {
+      "type": "section",
+      "id": "about",
+      "title": "About Us",
+      "children": [
+        {
+          "type": "text",
+          "title": "空を超えて、新しい価値を",
+          "titleSize": 30,
+          "body": "Sky Projectは、新しい体験と価値創造に取り組むプロジェクトです。空の広さのように、無限の可能性を信じて活動しています。\n私たちは技術、デザイン、創造性を融合させ、人々の生活をより豊かにするソリューションを提供します。"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "children": [
+        {
+          "type": "insection",
+          "radius": 10,
+          "children": [
+            { "type": "text", "title": "50+", "titleSize": 30, "body": "プロジェクト" }
+          ]
+        },
+        {
+          "type": "insection",
+          "radius": 10,
+          "children": [
+            { "type": "text", "title": "30+", "titleSize": 30, "body": "パートナー" }
+          ]
+        },
+        {
+          "type": "insection",
+          "radius": 10,
+          "children": [
+            { "type": "text", "title": "100%", "titleSize": 30, "body": "情熱" }
+          ]
+        },
+        {
+          "type": "insection",
+          "radius": 10,
+          "children": [
+            { "type": "text", "title": "∞", "titleSize": 30, "body": "可能性" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "section",
+      "id": "features",
+      "title": "Features",
+      "children": [
+        {
+          "type": "text",
+          "title": "私たちの強み",
+          "titleSize": 24
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "children": [
+        {
+          "type": "insection",
+          "radius": 10,
+          "children": [
+            { "type": "text", "title": "スピード", "body": "迅速かつ効率的なアプローチで、アイデアを素早く形にします。" }
+          ]
+        },
+        {
+          "type": "insection",
+          "radius": 10,
+          "children": [
+            { "type": "text", "title": "デザイン", "body": "美しさと機能性を兼ね備えた、記憶に残るデザインを提供します。" }
+          ]
+        },
+        {
+          "type": "insection",
+          "radius": 10,
+          "children": [
+            { "type": "text", "title": "迅速なサポート", "body": "迅速なサポートしっかりとした対応を提供します。" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "section",
+      "id": "community",
+      "title": "Community",
+      "children": [
+        {
+          "type": "text",
+          "title": "コミュニティへ参加",
+          "titleSize": 26,
+          "body": "Sky Projectのコミュニティに参加して、最新情報や他のメンバーと交流しましょう。"
+        },
+        {
+          "type": "button",
+          "title": "Discordに参加",
+          "color": "primary",
+          "action": { "type": "external", "url": "https://discord.gg/ZxBS4rW3qs" }
+        }
+      ]
+    }
+  ]
+}
