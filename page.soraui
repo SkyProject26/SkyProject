@@ -11,7 +11,7 @@
   "components": [
     {
       "type": "imagesection",
-      "height": 560,
+      "height": 700,
       "image": "sky.png"
     },
 
