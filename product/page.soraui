@@ -45,7 +45,7 @@
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "Sky Games", "titleSize": 30, "body": "すべてのゲームを無料で。" }
+            { "type": "text", "title": "Sky Games", "titleSize": 30, "body": "すべてのゲームを無料で。" },
             { "type": "button", "title": "サイトへ行く", "color": "primary", "action": {"type": "link", "url": "https://sky-project-web.vercel.app/product/sky-games/index.html"}}
 
           ]
@@ -61,7 +61,7 @@
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "Discord", "titleSize": 30, "body": "Discordではいち早く最新情報を受け取れます！" }
+            { "type": "text", "title": "Discord", "titleSize": 30, "body": "Discordではいち早く最新情報を受け取れます！" },
             { "type": "button", "title": "Discordへ参加", "color": "primary", "action": {"type": "link", "url": "https://discord.gg/ZxBS4rW3qs"}}
           ]
         }
