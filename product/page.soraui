@@ -30,25 +30,13 @@
     },
     {
       "type": "section",
-      "id": "roblox",
-      "title": "Roblox Products",
-      "children": [
-        {
-          "type": "text",
-          "title": "安全なサービスをみんなに。",
-          "titleSize": 30,
-          "body": "Sky Projectが作成するサービスはどれも安全です。 WebSiteにはVercelを使っており、セキュリティも保証されています。更に私の提供するスクリプトはどれもオープンソースです。"
-        }
-      ]
-    },
-    {
-      "type": "section",
+      "height": 300,
       "children": [
         {
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "Sky Scripts", "titleSize": 30, "body": "プロジェクト" }
+            { "type": "text", "title": "Sky Scripts", "titleSize": 30, "body": "RobloxのスクリプトやExecuterがあります。" }
           ]
         },
         {
