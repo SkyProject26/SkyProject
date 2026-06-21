@@ -15,7 +15,7 @@
       "image": "sky.png",
       "children": [
         { "type": "text", "title": "私たちのプロダクト" },
-        { "type": "button", "title": "詳しく見る", "color": "primary", "action": {"type": "link", "url": "https://sky-project-web.vercel.app/product/index.html"}" }
+        { "type": "button", "title": "詳しく見る", "color": "primary", "action": {"type": "link", "url": "https://sky-project-web.vercel.app/product/index.html"}"}
       ]
     },
 
