@@ -36,7 +36,7 @@
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "Sky Scripts", "titleSize": 30, "body": "RobloxのスクリプトやExecuterがあります。" }
+            { "type": "text", "title": "Sky Scripts", "titleSize": 30, "body": "RobloxのスクリプトやExecuterがあります。" },
 	　　{ "type": "button", "title": "サイトへ", "color": "primary", "action": {"type": "link", "url": "https://sky-project-web.vercel.app/product/sky-scripts/index.html"}}
           ]
         },
