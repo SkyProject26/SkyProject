@@ -30,7 +30,7 @@
     },
     {
       "type": "section",
-      "height": 300,
+      "height": 150,
       "position": "bottom-center",
       "children": [
         {
