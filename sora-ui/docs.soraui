@@ -1,266 +1,733 @@
 {
-"theme": "whiteorange",
-"mode": "Docs",
+  "theme": "darkblue",
+  "mode": "Docs",
 
-"titlebar": {
-"title": "Sora UI Documentation",
-"icon": "🌙"
-},
+  "titlebar": {
+    "title": "Sora UI Documentation",
+    "icon": "🌙",
+    "mobile": {
+      "title": "Sora UI",
+      "icon": "📚"
+    }
+  },
 
-"sidebar": [
-{
-"title": "Introduction",
-"icon": "📖",
-"pages": [
-{ "id": "intro", "title": "Welcome" },
-{ "id": "install", "title": "Installation" },
-{ "id": "quickstart", "title": "Quick Start" }
-]
-},
+  "tabs": [
+    {
+      "id": "guide",
+      "title": "Guide",
+      "sidebar": [
+        {
+          "id": "getting-started",
+          "title": "Getting Started",
+          "pages": [
+            { "id": "welcome", "title": "Welcome" },
+            { "id": "installation", "title": "Installation" },
+            { "id": "quickstart", "title": "Quick Start" },
+            { "id": "themes", "title": "Themes" }
+          ]
+        },
+        {
+          "id": "core",
+          "title": "Core Concepts",
+          "pages": [
+            { "id": "page-mode", "title": "Page Mode" },
+            { "id": "docs-mode", "title": "Docs Mode" }
+          ]
+        }
+      ]
+    },
 
-```
-{
-  "title": "Core",
-  "icon": "🚀",
-  "pages": [
-    { "id": "page-mode", "title": "Page Mode" },
-    { "id": "docs-mode", "title": "Docs Mode" },
-    { "id": "titlebar", "title": "Titlebar" }
+    {
+      "id": "components",
+      "title": "Components",
+      "sidebar": [
+        {
+          "id": "components-list",
+          "title": "Components",
+          "pages": [
+            { "id": "section", "title": "Section" },
+            { "id": "insection", "title": "InSection" },
+            { "id": "imagesection", "title": "ImageSection" },
+            { "id": "text", "title": "Text" },
+            { "id": "image", "title": "Image" },
+            { "id": "button", "title": "Button" },
+            { "id": "table", "title": "Table" },
+            { "id": "list", "title": "List" },
+            { "id": "codespace", "title": "CodeSpace" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "layout",
+      "title": "Layout",
+      "sidebar": [
+        {
+          "id": "layout-system",
+          "title": "Layout System",
+          "pages": [
+            { "id": "size", "title": "Size" },
+            { "id": "position", "title": "Position" },
+            { "id": "offset", "title": "Offset" },
+            { "id": "mobile", "title": "Mobile Override" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "examples",
+      "title": "Examples",
+      "sidebar": [
+        {
+          "id": "examples-group",
+          "title": "Examples",
+          "pages": [
+            { "id": "basic-page", "title": "Basic Page" },
+            { "id": "responsive-cards", "title": "Responsive Cards" },
+            { "id": "hero-section", "title": "Hero Section" },
+            { "id": "landing-page", "title": "Landing Page" },
+            { "id": "docs-site", "title": "Docs Site" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "reference",
+      "title": "Reference",
+      "sidebar": [
+        {
+          "id": "reference-group",
+          "title": "Reference",
+          "pages": [
+            { "id": "requirements", "title": "Requirements" },
+            { "id": "limitations", "title": "Limitations" },
+            { "id": "debug", "title": "Debug Tips" },
+            { "id": "faq", "title": "FAQ" },
+            { "id": "version", "title": "Version Info" }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "components": [
+
+    {
+      "tab": "guide",
+      "page": "welcome",
+      "type": "text",
+      "title": "Welcome to Sora UI",
+      "body": "Sora UI is a JSON based UI framework designed to build modern websites, landing pages and documentation sites without writing traditional frontend code."
+    },
+
+    {
+      "tab": "guide",
+      "page": "welcome",
+      "type": "table",
+      "columns": ["Property","Value"],
+      "rows": [
+        ["Version","2.0"],
+        ["Release Date","2025-06-24"],
+        ["Lines of Code","2002"],
+        ["Breaking Changes","None"]
+      ]
+    },
+
+    {
+      "tab": "guide",
+      "page": "installation",
+      "type": "text",
+      "title": "Installation",
+      "body": "Replace your existing sora-ui.js with the new version. Existing projects remain fully compatible."
+    },
+
+    {
+      "tab": "guide",
+      "page": "installation",
+      "type": "codespace",
+      "language": "html",
+      "code": "<script src=\"sora-ui.js\"></script>"
+    },
+
+    {
+      "tab": "guide",
+      "page": "quickstart",
+      "type": "text",
+      "title": "Quick Start",
+      "body": "Create a container element and point it to a .soraui file."
+    },
+
+    {
+      "tab": "guide",
+      "page": "quickstart",
+      "type": "codespace",
+      "language": "html",
+      "code": "<div id=\"app\" data-soraui-src=\"page.soraui\"></div>\n<script src=\"sora-ui.js\"></script>"
+    },
+
+    {
+      "tab": "guide",
+      "page": "quickstart",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"theme\": \"whiteorange\",\n  \"mode\": \"Page\",\n  \"titlebar\": {\n    \"title\": \"Hello\"\n  },\n  \"components\": [\n    {\n      \"type\": \"text\",\n      \"title\": \"Hello World\"\n    }\n  ]\n}"
+    },
+
+    {
+      "tab": "guide",
+      "page": "themes",
+      "type": "text",
+      "title": "Themes",
+      "body": "Sora UI ships with multiple built-in themes."
+    },
+
+    {
+      "tab": "guide",
+      "page": "themes",
+      "type": "table",
+      "columns": ["Theme","Purpose"],
+      "rows": [
+        ["whiteorange","Bright orange accent theme"],
+        ["darkorange","Dark theme with orange accent"],
+        ["darkblue","Dark theme optimized for documentation"]
+      ]
+    },
+
+    {
+      "tab": "guide",
+      "page": "page-mode",
+      "type": "text",
+      "title": "Page Mode",
+      "body": "Page mode is designed for websites, dashboards and landing pages."
+    },
+
+    {
+      "tab": "guide",
+      "page": "page-mode",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"theme\": \"whiteorange\",\n  \"mode\": \"Page\"\n}"
+    },
+
+    {
+      "tab": "guide",
+      "page": "page-mode",
+      "type": "text",
+      "title": "Page Mode with Tabs",
+      "body": "Tabs allow content grouping without changing pages."
+    },
+
+    {
+      "tab": "guide",
+      "page": "page-mode",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"tabs\": [\n    {\"id\":\"home\",\"title\":\"Home\"},\n    {\"id\":\"about\",\"title\":\"About\"}\n  ]\n}"
+    },
+
+    {
+      "tab": "guide",
+      "page": "docs-mode",
+      "type": "text",
+      "title": "Docs Mode",
+      "body": "Docs mode provides a GitBook-style documentation experience with sidebars, pages and mobile navigation."
+    },
+
+    {
+      "tab": "guide",
+      "page": "docs-mode",
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Sticky titlebar",
+        "Sidebar navigation",
+        "Mobile drawer",
+        "Tab support",
+        "Independent sidebar per tab"
+      ]
+    },
+    {
+      "tab": "components",
+      "page": "section",
+      "type": "text",
+      "title": "Section",
+      "body": "Section はページの基本コンテナです。複数のコンポーネントをまとめるために使用します。"
+    },
+
+    {
+      "tab": "components",
+      "page": "section",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"section\",\n  \"title\": \"My Section\",\n  \"children\": []\n}"
+    },
+
+    {
+      "tab": "components",
+      "page": "section",
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "コンテンツグループ化",
+        "レイアウト区切り",
+        "子コンポーネント保持",
+        "レスポンシブ対応"
+      ]
+    },
+
+    {
+      "tab": "components",
+      "page": "insection",
+      "type": "text",
+      "title": "InSection",
+      "body": "Section の内部で使用するサブコンテナです。カードやグリッド要素の作成に最適です。"
+    },
+
+    {
+      "tab": "components",
+      "page": "insection",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"insection\",\n  \"width\": 300,\n  \"children\": []\n}"
+    },
+
+    {
+      "tab": "components",
+      "page": "insection",
+      "type": "text",
+      "title": "Common Use Cases",
+      "body": "カードUI、特徴紹介、価格表、ダッシュボードパネルなど。"
+    },
+
+    {
+      "tab": "components",
+      "page": "imagesection",
+      "type": "text",
+      "title": "ImageSection",
+      "body": "背景画像を持つ Section です。ヒーローエリアの作成に最適です。"
+    },
+
+    {
+      "tab": "components",
+      "page": "imagesection",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"imagesection\",\n  \"image\": \"hero.png\",\n  \"size\": \"auto\",\n  \"children\": []\n}"
+    },
+
+    {
+      "tab": "components",
+      "page": "imagesection",
+      "type": "text",
+      "title": "Hero Example",
+      "body": "ImageSection の上に Text を配置してヒーローセクションを作成できます。"
+    },
+
+    {
+      "tab": "components",
+      "page": "text",
+      "type": "text",
+      "title": "Text",
+      "body": "タイトルや本文を表示する最も基本的なコンポーネントです。"
+    },
+
+    {
+      "tab": "components",
+      "page": "text",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"text\",\n  \"title\": \"Hello\",\n  \"body\": \"World\"\n}"
+    },
+
+    {
+      "tab": "components",
+      "page": "text",
+      "type": "table",
+      "columns": ["Property","Description"],
+      "rows": [
+        ["title","タイトル"],
+        ["body","本文"],
+        ["position","配置"],
+        ["mobile","モバイル上書き"]
+      ]
+    },
+
+    {
+      "tab": "components",
+      "page": "image",
+      "type": "text",
+      "title": "Image",
+      "body": "画像を表示するコンポーネントです。size システムに完全対応しています。"
+    },
+
+    {
+      "tab": "components",
+      "page": "image",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"image\",\n  \"src\": \"image.png\",\n  \"size\": \"auto\"\n}"
+    },
+
+    {
+      "tab": "components",
+      "page": "image",
+      "type": "table",
+      "columns": ["Property","Description"],
+      "rows": [
+        ["src","画像URL"],
+        ["size","サイズモード"],
+        ["width","幅"],
+        ["height","高さ"],
+        ["mobile","モバイル設定"]
+      ]
+    },
+
+    {
+      "tab": "components",
+      "page": "button",
+      "type": "text",
+      "title": "Button",
+      "body": "クリック可能なボタンです。ページ移動やアクション実行に使用します。"
+    },
+
+    {
+      "tab": "components",
+      "page": "button",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"button\",\n  \"title\": \"Click Me\"\n}"
+    },
+
+    {
+      "tab": "components",
+      "page": "button",
+      "type": "text",
+      "title": "Scroll Example",
+      "body": "scrollTo アクションを使用して指定要素へ移動できます。"
+    },
+
+    {
+      "tab": "components",
+      "page": "button",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"action\": {\n    \"type\": \"scrollTo\",\n    \"target\": \"contact\"\n  }\n}"
+    },
+
+    {
+      "tab": "components",
+      "page": "table",
+      "type": "text",
+      "title": "Table",
+      "body": "行と列によるデータ表示を行います。"
+    },
+
+    {
+      "tab": "components",
+      "page": "table",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"table\",\n  \"columns\": [\"A\",\"B\"],\n  \"rows\": [[\"1\",\"2\"]]\n}"
+    },
+
+    {
+      "tab": "components",
+      "page": "list",
+      "type": "text",
+      "title": "List",
+      "body": "順序付きまたは順序なしリストを表示します。"
+    },
+
+    {
+      "tab": "components",
+      "page": "list",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"list\",\n  \"ordered\": false,\n  \"items\": [\"A\",\"B\",\"C\"]\n}"
+    },
+
+    {
+      "tab": "components",
+      "page": "codespace",
+      "type": "text",
+      "title": "CodeSpace",
+      "body": "コード表示用コンポーネントです。Highlight.js に対応しています。"
+    },
+
+    {
+      "tab": "components",
+      "page": "codespace",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"codespace\",\n  \"language\": \"json\",\n  \"code\": \"{}\"\n}"
+    },
+
+    {
+      "tab": "layout",
+      "page": "size",
+      "type": "text",
+      "title": "Size System",
+      "body": "Sora UI v2 introduces four size modes for responsive layouts."
+    },
+
+    {
+      "tab": "layout",
+      "page": "size",
+      "type": "table",
+      "columns": ["Mode","Width","Height","Usage"],
+      "rows": [
+        ["auto","100%","100%","Fullscreen elements"],
+        ["xauto","100%","Custom","Responsive width"],
+        ["yauto","Custom","100%","Responsive height"],
+        ["custom","Custom","Custom","Fixed size"]
+      ]
+    },
+
+    {
+      "tab": "layout",
+      "page": "size",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"image\",\n  \"size\": \"auto\"\n}"
+    },
+
+    {
+      "tab": "layout",
+      "page": "position",
+      "type": "text",
+      "title": "Position",
+      "body": "Position presets allow easy alignment without writing CSS."
+    },
+
+    {
+      "tab": "layout",
+      "page": "position",
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "top-left",
+        "top-center",
+        "top-right",
+        "middle-left",
+        "center-middle",
+        "middle-right",
+        "bottom-left",
+        "bottom-center",
+        "bottom-right"
+      ]
+    },
+
+    {
+      "tab": "layout",
+      "page": "position",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"position\": \"top-right\"\n}"
+    },
+
+    {
+      "tab": "layout",
+      "page": "offset",
+      "type": "text",
+      "title": "Offset",
+      "body": "Offsets fine tune component placement after the position preset has been applied."
+    },
+
+    {
+      "tab": "layout",
+      "page": "offset",
+      "type": "table",
+      "columns": ["Property","Description"],
+      "rows": [
+        ["offsetTop","Move down from top"],
+        ["offsetRight","Move left/right"],
+        ["offsetBottom","Move upward/downward"],
+        ["offsetLeft","Move left/right"]
+      ]
+    },
+
+    {
+      "tab": "layout",
+      "page": "offset",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"position\": \"bottom-right\",\n  \"offsetBottom\": 24,\n  \"offsetRight\": 24\n}"
+    },
+
+    {
+      "tab": "layout",
+      "page": "mobile",
+      "type": "text",
+      "title": "Mobile Override",
+      "body": "Any component can define a mobile object. It becomes active when the viewport width is 720px or less."
+    },
+
+    {
+      "tab": "layout",
+      "page": "mobile",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"mobile\": {\n    \"title\": \"Mobile Title\"\n  }\n}"
+    },
+
+    {
+      "tab": "layout",
+      "page": "mobile",
+      "type": "text",
+      "title": "Breakpoint",
+      "body": "Desktop > 720px, Mobile ≤ 720px."
+    },
+
+    {
+      "tab": "examples",
+      "page": "basic-page",
+      "type": "text",
+      "title": "Basic Page Example",
+      "body": "The simplest possible Sora UI application."
+    },
+
+    {
+      "tab": "examples",
+      "page": "basic-page",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"theme\": \"whiteorange\",\n  \"mode\": \"Page\",\n  \"titlebar\": {\"title\":\"Hello\"},\n  \"components\": [\n    {\"type\":\"text\",\"title\":\"Hello World\"}\n  ]\n}"
+    },
+
+    {
+      "tab": "examples",
+      "page": "responsive-cards",
+      "type": "text",
+      "title": "Responsive Cards",
+      "body": "Three desktop cards become a single column on mobile devices."
+    },
+
+    {
+      "tab": "examples",
+      "page": "responsive-cards",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\":\"insection\",\n  \"width\":280,\n  \"mobile\":{\"size\":\"auto\"}\n}"
+    },
+
+    {
+      "tab": "examples",
+      "page": "hero-section",
+      "type": "text",
+      "title": "Hero Section",
+      "body": "Combine ImageSection with Text to build a modern landing page hero."
+    },
+
+    {
+      "tab": "examples",
+      "page": "hero-section",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\":\"imagesection\",\n  \"image\":\"hero.png\",\n  \"size\":\"auto\"\n}"
+    },
+
+    {
+      "tab": "examples",
+      "page": "landing-page",
+      "type": "text",
+      "title": "Landing Page",
+      "body": "A complete landing page can be built using tabs, sections, images and cards."
+    },
+
+    {
+      "tab": "examples",
+      "page": "docs-site",
+      "type": "text",
+      "title": "Documentation Site",
+      "body": "Docs Mode provides GitBook-style navigation with sidebars and pages."
+    },
+
+    {
+      "tab": "reference",
+      "page": "requirements",
+      "type": "table",
+      "columns": ["Requirement","Value"],
+      "rows": [
+        ["JavaScript","ES6+"],
+        ["Browser","Modern browsers"],
+        ["ResizeObserver","Required"],
+        ["CSS Variables","Required"]
+      ]
+    },
+
+    {
+      "tab": "reference",
+      "page": "limitations",
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "type cannot be overridden in mobile",
+        "Docs mode requires page mapping",
+        "IE is not supported",
+        "CSS variables are required"
+      ]
+    },
+
+    {
+      "tab": "reference",
+      "page": "debug",
+      "type": "text",
+      "title": "Debug Tips"
+    },
+
+    {
+      "tab": "reference",
+      "page": "debug",
+      "type": "codespace",
+      "language": "javascript",
+      "code": "console.log(window.matchMedia('(max-width:720px)').matches);"
+    },
+
+    {
+      "tab": "reference",
+      "page": "debug",
+      "type": "codespace",
+      "language": "javascript",
+      "code": "console.log(window.innerWidth);"
+    },
+
+    {
+      "tab": "reference",
+      "page": "faq",
+      "type": "text",
+      "title": "Frequently Asked Questions",
+      "body": "The most common questions from Sora UI users."
+    },
+
+    {
+      "tab": "reference",
+      "page": "faq",
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Why is mobile override not working?",
+        "Why does offset move unexpectedly?",
+        "Why is the sidebar not scrolling?",
+        "Why does the titlebar stay visible?"
+      ]
+    },
+
+    {
+      "tab": "reference",
+      "page": "version",
+      "type": "table",
+      "columns": ["Property","Value"],
+      "rows": [
+        ["Version","2.0"],
+        ["Release Date","2025-06-24"],
+        ["Lines of Code","2002"],
+        ["Breaking Changes","None"],
+        ["Compatibility","Fully Backward Compatible"]
+      ]
+    }
+
   ]
-},
-
-{
-  "title": "v2 Features",
-  "icon": "✨",
-  "pages": [
-    { "id": "size", "title": "Size System" },
-    { "id": "position", "title": "Position & Offset" },
-    { "id": "mobile", "title": "Mobile Override" }
-  ]
-},
-
-{
-  "title": "Reference",
-  "icon": "📚",
-  "pages": [
-    { "id": "requirements", "title": "Requirements" },
-    { "id": "limitations", "title": "Limitations" },
-    { "id": "version", "title": "Version Info" }
-  ]
-}
-```
-
-],
-
-"components": [
-
-```
-{
-  "page": "intro",
-  "type": "text",
-  "title": "Sora UI v2",
-  "description": "Build modern websites using JSON",
-  "body": "Sora UI は JSON だけで UI を構築できる軽量フレームワークです。Page モードと Docs モードの両方をサポートしています。"
-},
-
-{
-  "page": "intro",
-  "type": "table",
-  "columns": ["項目", "内容"],
-  "rows": [
-    ["Version", "2.0"],
-    ["Release", "2025-06-24"],
-    ["Lines", "2002"],
-    ["Breaking Changes", "None"]
-  ]
-},
-
-{
-  "page": "install",
-  "type": "text",
-  "title": "Installation",
-  "body": "既存の sora-ui.js を置き換えるだけで v2 を利用できます。"
-},
-
-{
-  "page": "install",
-  "type": "codespace",
-  "language": "html",
-  "code": "<script src=\"sora-ui.js\"></script>"
-},
-
-{
-  "page": "quickstart",
-  "type": "text",
-  "title": "Quick Start"
-},
-
-{
-  "page": "quickstart",
-  "type": "codespace",
-  "language": "html",
-  "code": "<div id=\"app\" data-soraui-src=\"page.soraui\"></div>\n<script src=\"sora-ui.js\"></script>"
-},
-
-{
-  "page": "quickstart",
-  "type": "codespace",
-  "language": "json",
-  "code": "{\n  \"theme\":\"whiteorange\",\n  \"mode\":\"Page\"\n}"
-},
-
-{
-  "page": "page-mode",
-  "type": "text",
-  "title": "Page Mode",
-  "body": "通常のWebサイトやランディングページ向けのモードです。"
-},
-
-{
-  "page": "page-mode",
-  "type": "codespace",
-  "language": "json",
-  "code": "{\n  \"mode\":\"Page\"\n}"
-},
-
-{
-  "page": "docs-mode",
-  "type": "text",
-  "title": "Docs Mode",
-  "body": "GitBook風のドキュメントサイトを構築できます。"
-},
-
-{
-  "page": "docs-mode",
-  "type": "list",
-  "ordered": false,
-  "items": [
-    "Sticky Titlebar",
-    "Sidebar Navigation",
-    "Search",
-    "Mobile Sidebar",
-    "Tabs Support"
-  ]
-},
-
-{
-  "page": "titlebar",
-  "type": "text",
-  "title": "Sticky Titlebar",
-  "body": "v2ではタイトルバーが常時表示されます。"
-},
-
-{
-  "page": "titlebar",
-  "type": "codespace",
-  "language": "json",
-  "code": "{\n  \"titlebar\": {\n    \"title\": \"My App\",\n    \"icon\": \"🚀\"\n  }\n}"
-},
-
-{
-  "page": "size",
-  "type": "text",
-  "title": "Size System",
-  "body": "auto / xauto / yauto / custom を利用できます。"
-},
-
-{
-  "page": "size",
-  "type": "table",
-  "columns": ["値","説明"],
-  "rows": [
-    ["auto","幅と高さを100%"],
-    ["xauto","横幅のみ100%"],
-    ["yauto","高さのみ100%"],
-    ["custom","width / heightを使用"]
-  ]
-},
-
-{
-  "page": "size",
-  "type": "codespace",
-  "language": "json",
-  "code": "{\n  \"type\":\"image\",\n  \"size\":\"auto\"\n}"
-},
-
-{
-  "page": "position",
-  "type": "text",
-  "title": "Position & Offset"
-},
-
-{
-  "page": "position",
-  "type": "list",
-  "ordered": false,
-  "items": [
-    "top-left",
-    "top-center",
-    "top-right",
-    "center-left",
-    "center",
-    "center-right",
-    "bottom-left",
-    "bottom-center",
-    "bottom-right"
-  ]
-},
-
-{
-  "page": "position",
-  "type": "codespace",
-  "language": "json",
-  "code": "{\n  \"position\":\"top-right\",\n  \"offsetTop\":16,\n  \"offsetRight\":12\n}"
-},
-
-{
-  "page": "mobile",
-  "type": "text",
-  "title": "Mobile Override",
-  "body": "720px以下で別設定を適用できます。"
-},
-
-{
-  "page": "mobile",
-  "type": "codespace",
-  "language": "json",
-  "code": "{\n  \"mobile\": {\n    \"title\":\"スマホ版\",\n    \"size\":\"auto\"\n  }\n}"
-},
-
-{
-  "page": "requirements",
-  "type": "table",
-  "columns": ["要件","内容"],
-  "rows": [
-    ["Browser","Latest 2 generations"],
-    ["JavaScript","ES6+"],
-    ["CSS","CSS Variables"]
-  ]
-},
-
-{
-  "page": "limitations",
-  "type": "list",
-  "ordered": false,
-  "items": [
-    "type の mobile override は非対応",
-    "Docs モードでは page.tab 振り分け必須",
-    "IE は CSS変数非対応"
-  ]
-},
-
-{
-  "page": "version",
-  "type": "table",
-  "columns": ["項目","値"],
-  "rows": [
-    ["Version","2.0"],
-    ["Release Date","2025-06-24"],
-    ["Lines of Code","2002"],
-    ["Breaking Changes","なし"]
-  ]
-}
-```
-
-]
 }
