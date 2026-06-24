@@ -1,638 +1,209 @@
 {
-  "mode": "page",
-  "theme": "darkorange",
-  "font": "Inter",
+  "theme": "whiteorange",
+  "mode": "Docs",
+
   "titlebar": {
     "title": "Sora UI",
-    "icon": "icon.svg"
+    "icon": "🌙"
   },
-  "tabs": [
+
+  "sidebar": [
     {
-      "id": "getting-started",
-      "title": "はじめに"
+      "title": "はじめに",
+      "icon": "📖",
+      "pages": [
+        {
+          "id": "intro",
+          "title": "Sora UIとは"
+        },
+        {
+          "id": "install",
+          "title": "インストール"
+        }
+      ]
     },
     {
-      "id": "configuration",
-      "title": "基本設定"
+      "title": "基本",
+      "icon": "🚀",
+      "pages": [
+        {
+          "id": "page",
+          "title": "Pageモード"
+        },
+        {
+          "id": "docs",
+          "title": "Docsモード"
+        }
+      ]
     },
     {
-      "id": "components",
-      "title": "コンポーネント"
+      "title": "コンポーネント",
+      "icon": "🧩",
+      "pages": [
+        {
+          "id": "section",
+          "title": "Section"
+        },
+        {
+          "id": "text",
+          "title": "Text"
+        },
+        {
+          "id": "button",
+          "title": "Button"
+        },
+        {
+          "id": "image",
+          "title": "Image"
+        }
+      ]
     },
     {
-      "id": "guides",
-      "title": "ガイド"
+      "title": "v2新機能",
+      "icon": "✨",
+      "pages": [
+        {
+          "id": "size",
+          "title": "Size"
+        },
+        {
+          "id": "position",
+          "title": "Position"
+        },
+        {
+          "id": "mobile",
+          "title": "Mobile"
+        }
+      ]
     }
   ],
+
   "components": [
+
     {
+      "page": "intro",
       "type": "text",
-      "title": "🚀 Sora UIとは",
-      "titleSize": 24,
-      "tab": "getting-started"
+      "title": "Sora UI",
+      "body": "JSONだけでWeb UIを構築できる軽量UIフレームワークです。"
     },
+
     {
-      "type": "section",
-      "title": "概要",
-      "children": [
-        {
-          "type": "text",
-          "body": "Sora UI は、HTMLファイルを一切編集せず、JSON形式の .soraui ファイルを書くだけでUIを組み立てられるライブラリです。"
-        }
-      ],
-      "tab": "getting-started"
-    },
-    {
-      "type": "section",
-      "title": "基本の考え方",
-      "children": [
-        {
-          "type": "list",
-          "ordered": false,
-          "items": [
-            "sora-ui.js は編集不要。ライブラリの核となるロジックがすべて入っている",
-            "page.soraui（または任意の名前の .soraui ファイル）にUI構造を記述する",
-            "index.html は data-soraui-src を指定するだけ"
-          ]
-        }
-      ],
-      "tab": "getting-started"
-    },
-    {
-      "type": "section",
-      "title": "3ステップで始める",
-      "children": [
-        {
-          "type": "list",
-          "ordered": true,
-          "items": [
-            "sora-ui.js と index.html を同じフォルダに置く",
-            "index.html に data-soraui-src=\"page.soraui\" を指定した div を置く",
-            "page.soraui に theme / mode / components を書く"
-          ]
-        }
-      ],
-      "tab": "getting-started"
-    },
-    {
+      "page": "install",
       "type": "text",
-      "title": "⚡ クイックスタート",
-      "titleSize": 24,
-      "tab": "getting-started"
+      "title": "インストール"
     },
+
     {
-      "type": "section",
-      "title": "最小構成のサンプル",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "html",
-          "code": "<div id=\"app\" data-soraui-src=\"page.soraui\"></div>\n<script src=\"sora-ui.js\"></script>"
-        },
-        {
-          "type": "codespace",
-          "language": "json",
-          "code": "{\n  \"theme\": \"whiteorange\",\n  \"mode\": \"page\",\n  \"components\": [\n    { \"type\": \"button\", \"title\": \"はじめる\" }\n  ]\n}"
-        }
-      ],
-      "tab": "getting-started"
+      "page": "install",
+      "type": "codespace",
+      "language": "html",
+      "code": "<div id=\"app\" data-soraui-src=\"page.soraui\"></div>\n<script src=\"sora-ui.js\"></script>"
     },
+
     {
+      "page": "page",
       "type": "text",
-      "title": "🗂️ ファイル構成",
-      "titleSize": 24,
-      "tab": "getting-started"
+      "title": "Pageモード",
+      "body": "通常のランディングページやサイト向けのモードです。"
     },
+
     {
-      "type": "section",
-      "title": "推奨ファイル構成",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "text",
-          "code": "project/\n├── index.html      (読み込むだけ)\n├── sora-ui.js      (本体、編集不要)\n└── page.soraui     (UI定義。ここだけ編集する)"
-        }
-      ],
-      "tab": "getting-started"
+      "page": "page",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"mode\": \"Page\"\n}"
     },
+
     {
+      "page": "docs",
       "type": "text",
-      "title": "🎨 テーマ",
-      "titleSize": 24,
-      "tab": "configuration"
+      "title": "Docsモード",
+      "body": "GitBook風のドキュメントサイトを構築できます。"
     },
+
     {
-      "type": "section",
-      "title": "用意されているテーマ",
-      "children": [
-        {
-          "type": "table",
-          "columns": [
-            "テーマ名",
-            "系統"
-          ],
-          "rows": [
-            [
-              "darkorange",
-              "オレンジ × ダーク"
-            ],
-            [
-              "whiteorange",
-              "オレンジ × ライト"
-            ],
-            [
-              "darkblue",
-              "ブルー × ダーク"
-            ],
-            [
-              "whiteblue",
-              "ブルー × ライト"
-            ]
-          ]
-        }
-      ],
-      "tab": "configuration"
-    },
-    {
-      "type": "section",
-      "title": "指定方法",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "json",
-          "code": "{ \"theme\": \"darkblue\" }"
-        }
-      ],
-      "tab": "configuration"
-    },
-    {
+      "page": "section",
       "type": "text",
-      "title": "🔤 フォント",
-      "titleSize": 24,
-      "tab": "configuration"
+      "title": "Section"
     },
+
     {
-      "type": "section",
-      "title": "フォントの指定方法",
-      "children": [
-        {
-          "type": "text",
-          "body": "拡張子（.ttf / .otf / .woff / .woff2）があればファイルパスとして読み込み、なければ Google Fonts の名前として自動で読み込みます。"
-        }
-      ],
-      "tab": "configuration"
+      "page": "section",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"section\",\n  \"title\": \"Hero\"\n}"
     },
+
     {
-      "type": "section",
-      "title": "例",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "json",
-          "code": "{ \"font\": \"Noto Sans JP\" }"
-        },
-        {
-          "type": "codespace",
-          "language": "json",
-          "code": "{ \"font\": \"fonts/MyFont.woff2\" }"
-        }
-      ],
-      "tab": "configuration"
-    },
-    {
+      "page": "text",
       "type": "text",
-      "title": "🪧 titlebar",
-      "titleSize": 24,
-      "tab": "configuration"
+      "title": "Textコンポーネント",
+      "body": "タイトル、説明、本文を表示します。"
     },
+
     {
-      "type": "section",
-      "title": "titlebarとは",
-      "children": [
-        {
-          "type": "text",
-          "body": "画面最上部に表示される、アイコンとタイトルのバーです。page モードではタブもこの中に入ります。"
-        }
-      ],
-      "tab": "configuration"
-    },
-    {
-      "type": "section",
-      "title": "指定方法",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "json",
-          "code": "{\n  \"titlebar\": {\n    \"title\": \"My App\",\n    \"icon\": \"🪐\"\n  }\n}"
-        }
-      ],
-      "tab": "configuration"
-    },
-    {
+      "page": "button",
       "type": "text",
-      "title": "🧭 mode (page / Docs)",
-      "titleSize": 24,
-      "tab": "configuration"
+      "title": "Buttonコンポーネント"
     },
+
     {
-      "type": "section",
-      "title": "page モード",
-      "children": [
-        {
-          "type": "text",
-          "body": "通常のホームページのようなUI。titlebarの中にタブが表示されます。"
-        }
-      ],
-      "tab": "configuration"
+      "page": "button",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"type\": \"button\",\n  \"title\": \"Click\"\n}"
     },
+
     {
-      "type": "section",
-      "title": "Docs モード",
-      "children": [
-        {
-          "type": "text",
-          "body": "このページのような、GitBook/Notion風の左サイドバー付きドキュメントUI。sidebar にカテゴリとページを定義します。"
-        }
-      ],
-      "tab": "configuration"
-    },
-    {
+      "page": "image",
       "type": "text",
-      "title": "🔲 section / imagesection",
-      "titleSize": 24,
-      "tab": "components"
+      "title": "Imageコンポーネント"
     },
+
     {
-      "type": "section",
-      "title": "ui-section",
-      "height": 140,
-      "children": [
-        {
-          "type": "text",
-          "title": "画面幅ジャストの帯状ブロック",
-          "description": "角丸なし。Section同士は間隔ゼロで縦に積み重なります"
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "section",
-      "title": "指定例",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "json",
-          "code": "{\n  \"type\": \"section\",\n  \"title\": \"プロフィール\",\n  \"height\": 200,\n  \"children\": [ ... ]\n}"
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "imagesection",
-      "height": 200,
-      "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800",
-      "position": "bottom-left",
-      "children": [
-        {
-          "type": "text",
-          "title": "ui-imagesection",
-          "titleSize": 22,
-          "description": "children を指定すると画像の上に重ねて表示できます"
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "section",
-      "title": "ui-imagesectionの指定例（重ね表示あり）",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "json",
-          "code": "{\n  \"type\": \"imagesection\",\n  \"height\": 220,\n  \"image\": \"https://example.com/photo.jpg\",\n  \"position\": \"bottom-left\",\n  \"children\": [\n    { \"type\": \"text\", \"title\": \"新着情報\" },\n    { \"type\": \"button\", \"title\": \"詳しく見る\" }\n  ]\n}"
-        }
-      ],
-      "tab": "components"
-    },
-    {
+      "page": "size",
       "type": "text",
-      "title": "🖼️ image",
-      "titleSize": 24,
-      "tab": "components"
+      "title": "Size設定",
+      "body": "auto / xauto / yauto / custom が使用できます。"
     },
+
     {
-      "type": "section",
-      "title": "ui-image",
-      "children": [
-        {
-          "type": "image",
-          "src": "https://images.unsplash.com/photo-1517842645767-c639042777db?w=400",
-          "width": 220,
-          "position": "center"
-        }
-      ],
-      "tab": "components"
+      "page": "size",
+      "type": "table",
+      "columns": ["値", "説明"],
+      "rows": [
+        ["auto", "横幅と高さを100%"],
+        ["xauto", "横幅のみ100%"],
+        ["yauto", "高さのみ100%"],
+        ["custom", "width/heightを使用"]
+      ]
     },
+
     {
-      "type": "section",
-      "title": "ui-section の中に置く単体の画像",
-      "children": [
-        {
-          "type": "text",
-          "body": "width / height でサイズ、position で section内の9方向配置を指定できます。imagesection と違い、section の一部に小さく画像を置きたい時に使います。"
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "section",
-      "title": "指定例",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "json",
-          "code": "{\n  \"type\": \"image\",\n  \"src\": \"https://example.com/photo.jpg\",\n  \"width\": 240,\n  \"position\": \"center\"\n}"
-        }
-      ],
-      "tab": "components"
-    },
-    {
+      "page": "position",
       "type": "text",
-      "title": "▦ insection",
-      "titleSize": 24,
-      "tab": "components"
+      "title": "Position設定"
     },
+
     {
-      "type": "section",
-      "title": "横並びの小さなセクション",
-      "children": [
-        {
-          "type": "insection",
-          "radius": 10,
-          "children": [
-            {
-              "type": "text",
-              "title": "Insection A"
-            }
-          ]
-        },
-        {
-          "type": "insection",
-          "radius": 10,
-          "children": [
-            {
-              "type": "text",
-              "title": "Insection B"
-            }
-          ]
-        },
-        {
-          "type": "insection",
-          "radius": 10,
-          "children": [
-            {
-              "type": "text",
-              "title": "Insection C"
-            }
-          ]
-        }
-      ],
-      "tab": "components"
+      "page": "position",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"position\": \"top-right\",\n  \"offsetTop\": 16,\n  \"offsetRight\": 12\n}"
     },
+
     {
-      "type": "section",
-      "title": "指定例",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "json",
-          "code": "{\n  \"type\": \"insection\",\n  \"radius\": 10,\n  \"children\": [ ... ]\n}"
-        }
-      ],
-      "tab": "components"
-    },
-    {
+      "page": "mobile",
       "type": "text",
-      "title": "🔘 button",
-      "titleSize": 24,
-      "tab": "components"
+      "title": "Mobile Override"
     },
+
     {
-      "type": "section",
-      "title": "action の種類",
-      "children": [
-        {
-          "type": "table",
-          "columns": [
-            "type",
-            "動作"
-          ],
-          "rows": [
-            [
-              "link",
-              "現在のタブで指定URLへ遷移"
-            ],
-            [
-              "external",
-              "新しいタブで指定URLを開く"
-            ],
-            [
-              "switchTab",
-              "指定したタブに切り替える"
-            ],
-            [
-              "toggleSection",
-              "指定したIDの要素の表示/非表示を切替"
-            ],
-            [
-              "copy",
-              "指定テキストをクリップボードへコピー"
-            ],
-            [
-              "scrollTo",
-              "指定IDの要素までスムーズスクロール"
-            ]
-          ]
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "section",
-      "title": "実際に動かしてみる",
-      "children": [
-        {
-          "type": "button",
-          "title": "リンクへ",
-          "color": "primary",
-          "action": {
-            "type": "link",
-            "url": "https://example.com"
-          }
-        },
-        {
-          "type": "button",
-          "title": "コピー",
-          "color": "secondary",
-          "action": {
-            "type": "copy",
-            "text": "Hello Sora UI"
-          }
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "text",
-      "title": "📝 text",
-      "titleSize": 24,
-      "tab": "components"
-    },
-    {
-      "type": "section",
-      "title": "ui-text",
-      "children": [
-        {
-          "type": "text",
-          "title": "タイトル",
-          "description": "説明文（小さめ・薄い色）",
-          "body": "本文。title / description / body はすべて任意項目です。"
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "section",
-      "title": "指定例",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "json",
-          "code": "{\n  \"type\": \"text\",\n  \"title\": \"タイトル\",\n  \"description\": \"説明\",\n  \"body\": \"本文\"\n}"
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "text",
-      "title": "📋 table / list",
-      "titleSize": 24,
-      "tab": "components"
-    },
-    {
-      "type": "section",
-      "title": "ui-table",
-      "children": [
-        {
-          "type": "table",
-          "columns": [
-            "列1",
-            "列2"
-          ],
-          "rows": [
-            [
-              "値A",
-              "値B"
-            ],
-            [
-              "値C",
-              "値D"
-            ]
-          ]
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "section",
-      "title": "ui-list",
-      "children": [
-        {
-          "type": "list",
-          "ordered": true,
-          "items": [
-            "項目1",
-            "項目2",
-            "項目3"
-          ]
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "text",
-      "title": "💻 codespace",
-      "titleSize": 24,
-      "tab": "components"
-    },
-    {
-      "type": "section",
-      "title": "コード表示＋コピー機能",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "javascript",
-          "code": "console.log(\"Hello, Sora UI!\");"
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "section",
-      "title": "シンタックスハイライトについて",
-      "children": [
-        {
-          "type": "text",
-          "body": "index.html で highlight.js を読み込んでいる場合、自動的に色分けされます。読み込んでいなければ、無色のコードブロックとして表示されます。"
-        }
-      ],
-      "tab": "components"
-    },
-    {
-      "type": "text",
-      "title": "📍 position（配置指定）",
-      "titleSize": 24,
-      "tab": "guides"
-    },
-    {
-      "type": "section",
-      "title": "9方向の配置",
-      "children": [
-        {
-          "type": "text",
-          "body": "top-left / top-center / top-right / center-left / center / center-right / bottom-left / bottom-center / bottom-right の9種類を、親要素（section や insection）基準で指定できます。"
-        }
-      ],
-      "tab": "guides"
-    },
-    {
-      "type": "section",
-      "title": "指定例",
-      "children": [
-        {
-          "type": "codespace",
-          "language": "json",
-          "code": "{\n  \"type\": \"section\",\n  \"height\": 160,\n  \"position\": \"center\",\n  \"children\": [ ... ]\n}"
-        }
-      ],
-      "tab": "guides"
-    },
-    {
-      "type": "text",
-      "title": "📱 モバイル対応",
-      "titleSize": 24,
-      "tab": "guides"
-    },
-    {
-      "type": "section",
-      "title": "ハンバーガーメニュー",
-      "children": [
-        {
-          "type": "text",
-          "body": "page モードは画面幅720px以下、Docsモードは860px以下で、タブやサイドバーが自動的にハンバーガーメニューに切り替わります。.soraui ファイル側の設定は不要です。"
-        }
-      ],
-      "tab": "guides"
+      "page": "mobile",
+      "type": "codespace",
+      "language": "json",
+      "code": "{\n  \"mobile\": {\n    \"title\": \"スマホ版\"\n  }\n}"
     }
+
   ]
 }
