@@ -1,209 +1,266 @@
 {
-  "theme": "darkorange",
-  "mode": "Docs",
+"theme": "whiteorange",
+"mode": "Docs",
 
-  "titlebar": {
-    "title": "Sora UI",
-    "icon": "🌙"
-  },
+"titlebar": {
+"title": "Sora UI Documentation",
+"icon": "🌙"
+},
 
-  "sidebar": [
-    {
-      "title": "はじめに",
-      "icon": "📖",
-      "pages": [
-        {
-          "id": "intro",
-          "title": "Sora UIとは"
-        },
-        {
-          "id": "install",
-          "title": "インストール"
-        }
-      ]
-    },
-    {
-      "title": "基本",
-      "icon": "🚀",
-      "pages": [
-        {
-          "id": "page",
-          "title": "Pageモード"
-        },
-        {
-          "id": "docs",
-          "title": "Docsモード"
-        }
-      ]
-    },
-    {
-      "title": "コンポーネント",
-      "icon": "🧩",
-      "pages": [
-        {
-          "id": "section",
-          "title": "Section"
-        },
-        {
-          "id": "text",
-          "title": "Text"
-        },
-        {
-          "id": "button",
-          "title": "Button"
-        },
-        {
-          "id": "image",
-          "title": "Image"
-        }
-      ]
-    },
-    {
-      "title": "v2新機能",
-      "icon": "✨",
-      "pages": [
-        {
-          "id": "size",
-          "title": "Size"
-        },
-        {
-          "id": "position",
-          "title": "Position"
-        },
-        {
-          "id": "mobile",
-          "title": "Mobile"
-        }
-      ]
-    }
-  ],
+"sidebar": [
+{
+"title": "Introduction",
+"icon": "📖",
+"pages": [
+{ "id": "intro", "title": "Welcome" },
+{ "id": "install", "title": "Installation" },
+{ "id": "quickstart", "title": "Quick Start" }
+]
+},
 
-  "components": [
-
-    {
-      "page": "intro",
-      "type": "text",
-      "title": "Sora UI",
-      "body": "JSONだけでWeb UIを構築できる軽量UIフレームワークです。"
-    },
-
-    {
-      "page": "install",
-      "type": "text",
-      "title": "インストール"
-    },
-
-    {
-      "page": "install",
-      "type": "codespace",
-      "language": "html",
-      "code": "<div id=\"app\" data-soraui-src=\"page.soraui\"></div>\n<script src=\"sora-ui.js\"></script>"
-    },
-
-    {
-      "page": "page",
-      "type": "text",
-      "title": "Pageモード",
-      "body": "通常のランディングページやサイト向けのモードです。"
-    },
-
-    {
-      "page": "page",
-      "type": "codespace",
-      "language": "json",
-      "code": "{\n  \"mode\": \"Page\"\n}"
-    },
-
-    {
-      "page": "docs",
-      "type": "text",
-      "title": "Docsモード",
-      "body": "GitBook風のドキュメントサイトを構築できます。"
-    },
-
-    {
-      "page": "section",
-      "type": "text",
-      "title": "Section"
-    },
-
-    {
-      "page": "section",
-      "type": "codespace",
-      "language": "json",
-      "code": "{\n  \"type\": \"section\",\n  \"title\": \"Hero\"\n}"
-    },
-
-    {
-      "page": "text",
-      "type": "text",
-      "title": "Textコンポーネント",
-      "body": "タイトル、説明、本文を表示します。"
-    },
-
-    {
-      "page": "button",
-      "type": "text",
-      "title": "Buttonコンポーネント"
-    },
-
-    {
-      "page": "button",
-      "type": "codespace",
-      "language": "json",
-      "code": "{\n  \"type\": \"button\",\n  \"title\": \"Click\"\n}"
-    },
-
-    {
-      "page": "image",
-      "type": "text",
-      "title": "Imageコンポーネント"
-    },
-
-    {
-      "page": "size",
-      "type": "text",
-      "title": "Size設定",
-      "body": "auto / xauto / yauto / custom が使用できます。"
-    },
-
-    {
-      "page": "size",
-      "type": "table",
-      "columns": ["値", "説明"],
-      "rows": [
-        ["auto", "横幅と高さを100%"],
-        ["xauto", "横幅のみ100%"],
-        ["yauto", "高さのみ100%"],
-        ["custom", "width/heightを使用"]
-      ]
-    },
-
-    {
-      "page": "position",
-      "type": "text",
-      "title": "Position設定"
-    },
-
-    {
-      "page": "position",
-      "type": "codespace",
-      "language": "json",
-      "code": "{\n  \"position\": \"top-right\",\n  \"offsetTop\": 16,\n  \"offsetRight\": 12\n}"
-    },
-
-    {
-      "page": "mobile",
-      "type": "text",
-      "title": "Mobile Override"
-    },
-
-    {
-      "page": "mobile",
-      "type": "codespace",
-      "language": "json",
-      "code": "{\n  \"mobile\": {\n    \"title\": \"スマホ版\"\n  }\n}"
-    }
-
+```
+{
+  "title": "Core",
+  "icon": "🚀",
+  "pages": [
+    { "id": "page-mode", "title": "Page Mode" },
+    { "id": "docs-mode", "title": "Docs Mode" },
+    { "id": "titlebar", "title": "Titlebar" }
   ]
+},
+
+{
+  "title": "v2 Features",
+  "icon": "✨",
+  "pages": [
+    { "id": "size", "title": "Size System" },
+    { "id": "position", "title": "Position & Offset" },
+    { "id": "mobile", "title": "Mobile Override" }
+  ]
+},
+
+{
+  "title": "Reference",
+  "icon": "📚",
+  "pages": [
+    { "id": "requirements", "title": "Requirements" },
+    { "id": "limitations", "title": "Limitations" },
+    { "id": "version", "title": "Version Info" }
+  ]
+}
+```
+
+],
+
+"components": [
+
+```
+{
+  "page": "intro",
+  "type": "text",
+  "title": "Sora UI v2",
+  "description": "Build modern websites using JSON",
+  "body": "Sora UI は JSON だけで UI を構築できる軽量フレームワークです。Page モードと Docs モードの両方をサポートしています。"
+},
+
+{
+  "page": "intro",
+  "type": "table",
+  "columns": ["項目", "内容"],
+  "rows": [
+    ["Version", "2.0"],
+    ["Release", "2025-06-24"],
+    ["Lines", "2002"],
+    ["Breaking Changes", "None"]
+  ]
+},
+
+{
+  "page": "install",
+  "type": "text",
+  "title": "Installation",
+  "body": "既存の sora-ui.js を置き換えるだけで v2 を利用できます。"
+},
+
+{
+  "page": "install",
+  "type": "codespace",
+  "language": "html",
+  "code": "<script src=\"sora-ui.js\"></script>"
+},
+
+{
+  "page": "quickstart",
+  "type": "text",
+  "title": "Quick Start"
+},
+
+{
+  "page": "quickstart",
+  "type": "codespace",
+  "language": "html",
+  "code": "<div id=\"app\" data-soraui-src=\"page.soraui\"></div>\n<script src=\"sora-ui.js\"></script>"
+},
+
+{
+  "page": "quickstart",
+  "type": "codespace",
+  "language": "json",
+  "code": "{\n  \"theme\":\"whiteorange\",\n  \"mode\":\"Page\"\n}"
+},
+
+{
+  "page": "page-mode",
+  "type": "text",
+  "title": "Page Mode",
+  "body": "通常のWebサイトやランディングページ向けのモードです。"
+},
+
+{
+  "page": "page-mode",
+  "type": "codespace",
+  "language": "json",
+  "code": "{\n  \"mode\":\"Page\"\n}"
+},
+
+{
+  "page": "docs-mode",
+  "type": "text",
+  "title": "Docs Mode",
+  "body": "GitBook風のドキュメントサイトを構築できます。"
+},
+
+{
+  "page": "docs-mode",
+  "type": "list",
+  "ordered": false,
+  "items": [
+    "Sticky Titlebar",
+    "Sidebar Navigation",
+    "Search",
+    "Mobile Sidebar",
+    "Tabs Support"
+  ]
+},
+
+{
+  "page": "titlebar",
+  "type": "text",
+  "title": "Sticky Titlebar",
+  "body": "v2ではタイトルバーが常時表示されます。"
+},
+
+{
+  "page": "titlebar",
+  "type": "codespace",
+  "language": "json",
+  "code": "{\n  \"titlebar\": {\n    \"title\": \"My App\",\n    \"icon\": \"🚀\"\n  }\n}"
+},
+
+{
+  "page": "size",
+  "type": "text",
+  "title": "Size System",
+  "body": "auto / xauto / yauto / custom を利用できます。"
+},
+
+{
+  "page": "size",
+  "type": "table",
+  "columns": ["値","説明"],
+  "rows": [
+    ["auto","幅と高さを100%"],
+    ["xauto","横幅のみ100%"],
+    ["yauto","高さのみ100%"],
+    ["custom","width / heightを使用"]
+  ]
+},
+
+{
+  "page": "size",
+  "type": "codespace",
+  "language": "json",
+  "code": "{\n  \"type\":\"image\",\n  \"size\":\"auto\"\n}"
+},
+
+{
+  "page": "position",
+  "type": "text",
+  "title": "Position & Offset"
+},
+
+{
+  "page": "position",
+  "type": "list",
+  "ordered": false,
+  "items": [
+    "top-left",
+    "top-center",
+    "top-right",
+    "center-left",
+    "center",
+    "center-right",
+    "bottom-left",
+    "bottom-center",
+    "bottom-right"
+  ]
+},
+
+{
+  "page": "position",
+  "type": "codespace",
+  "language": "json",
+  "code": "{\n  \"position\":\"top-right\",\n  \"offsetTop\":16,\n  \"offsetRight\":12\n}"
+},
+
+{
+  "page": "mobile",
+  "type": "text",
+  "title": "Mobile Override",
+  "body": "720px以下で別設定を適用できます。"
+},
+
+{
+  "page": "mobile",
+  "type": "codespace",
+  "language": "json",
+  "code": "{\n  \"mobile\": {\n    \"title\":\"スマホ版\",\n    \"size\":\"auto\"\n  }\n}"
+},
+
+{
+  "page": "requirements",
+  "type": "table",
+  "columns": ["要件","内容"],
+  "rows": [
+    ["Browser","Latest 2 generations"],
+    ["JavaScript","ES6+"],
+    ["CSS","CSS Variables"]
+  ]
+},
+
+{
+  "page": "limitations",
+  "type": "list",
+  "ordered": false,
+  "items": [
+    "type の mobile override は非対応",
+    "Docs モードでは page.tab 振り分け必須",
+    "IE は CSS変数非対応"
+  ]
+},
+
+{
+  "page": "version",
+  "type": "table",
+  "columns": ["項目","値"],
+  "rows": [
+    ["Version","2.0"],
+    ["Release Date","2025-06-24"],
+    ["Lines of Code","2002"],
+    ["Breaking Changes","なし"]
+  ]
+}
+```
+
+]
 }
