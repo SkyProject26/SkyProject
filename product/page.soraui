@@ -37,7 +37,7 @@
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "Sky Scripts", "titleSize": 30, "body": "RobloxのスクリプトやExecuterがあります。安全性は保証されません。" },
+            { "type": "text", "title": "Sky Scripts", "titleSize": 30, "body": "Robloxのスクリプトがたくさんあります。これはSkyProjectのメインサービスです。他にも推奨されるExecuterがあります。" },
             { "type": "button", "title": "サイトへ行く", "color": "primary", "action": {"type": "link", "url": "https://sora-scripts.vercel.app/index.html"}}
           ]
         },
@@ -45,8 +45,8 @@
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "Sky Games", "titleSize": 30, "body": "すべてのゲームを無料でダウンロード、プレイができます。" },
-            { "type": "button", "title": "サイトへ行く", "color": "primary", "action": {"type": "link", "url": "https://sky-project-web.vercel.app/product/sky-games/index.html"}}
+            { "type": "text", "title": "Sky Games", "titleSize": 30, "body": "様々なゲームのダウンロードからプレイまで、無料でできます | SteamRIP" },
+            { "type": "button", "title": "サイトへ行く", "color": "primary", "action": {"type": "link", "url": "https://steamrip.com/"}}
 
           ]
         },
@@ -66,6 +66,45 @@
           ]
         }
       ]
+    },
+    {
+      "type": "section",
+      "height": 300,
+      "position": "bottom-center",
+      "children": [
+        {
+          "type": "insection",
+          "radius": 20,
+          "children": [
+            { "type": "text", "title": "Sora UI V2", "titleSize": 30, "body": "複雑なHTML,CSSを組まなくても一つのコードでデザインなどを自動でやってくれます。" },
+            { "type": "button", "title": "サイトへ行く", "color": "primary", "action": {"type": "link", "url": "https://sora-scripts.vercel.app/sora-ui/index.html"}}
+          ]
+        },
+        {
+          "type": "insection",
+          "radius": 20,
+          "children": [
+            { "type": "text", "title": "SoraMusic", "titleSize": 30, "body": "現在開発中のPC専用マルチ音楽プレイヤーです。基本的にmp3ファイルをアップロードして音楽を聞きます。 | Build by Electron" },
+            { "type": "button", "title": ".exeファイルをダウンロード | Google Drive", "color": "primary", "action": {"type": "link", "url": "https://drive.google.com/file/d/1yEWpnqvyjcVvXXUGe_HT21UWiz1caWFx/view?usp=sharing"}}
+
+          ]
+        },
+        {
+          "type": "insection",
+          "radius": 20,
+          "children": [
+            { "type": "text", "title": "ComingSoon", "titleSize": 30, "body": "..." }
+          ]
+        },
+        {
+          "type": "insection",
+          "radius": 20,
+          "children": [
+            { "type": "text", "title": "ComingSoon", "titleSize": 30, "body": "..." },
+          ]
+        }
+      ]
     }
+
   ]
 }
