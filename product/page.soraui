@@ -100,11 +100,10 @@
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "ComingSoon", "titleSize": 30, "body": "..." },
+            { "type": "text", "title": "ComingSoon", "titleSize": 30, "body": "..." }
           ]
         }
       ]
     }
-
   ]
 }
