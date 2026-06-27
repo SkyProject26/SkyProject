@@ -30,7 +30,7 @@
     },
     {
       "type": "section",
-      "height": 250,
+      "height": 260,
       "position": "bottom-center",
       "title": "Main Products",
       "children": [
@@ -70,7 +70,7 @@
     },
     {
       "type": "section",
-      "height": 250,
+      "height": 260,
       "position": "bottom-center",
       "title": "Dev Products",
       "children": [
