@@ -79,7 +79,7 @@
           "radius": 20,
           "children": [
             { "type": "text", "title": "Sora UI V2", "titleSize": 30, "body": "複雑なHTML,CSSを組まなくても一つのコードでデザインなどを自動でやってくれます。" },
-            { "type": "button", "title": "サイトへ行く", "color": "primary", "action": {"type": "link", "url": "https://sora-scripts.vercel.app/sora-ui/index.html"}}
+            { "type": "button", "title": "サイトへ行く", "color": "primary", "action": {"type": "link", "url": "https://sky-project-web.vercel.app/sora-ui/index.html"}}
           ]
         },
         {
