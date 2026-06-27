@@ -46,7 +46,7 @@
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "Sky Games | SteamRIP(Not SP)", "titleSize": 30, "body": "様々なゲームのダウンロードからプレイまで、無料でできます | SteamRIP" },
+            { "type": "text", "title": "SteamRIP(Not SP)", "titleSize": 30, "body": "様々なゲームのダウンロードからプレイまで、無料でできます | SteamRIP" },
             { "type": "button", "title": "サイトへ行く", "color": "primary", "action": {"type": "link", "url": "https://steamrip.com/"}}
 
           ]
