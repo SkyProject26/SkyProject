@@ -95,7 +95,8 @@
           "type": "insection",
           "radius": 20,
           "children": [
-            { "type": "text", "title": "ComingSoon", "titleSize": 30, "body": "..." }
+            { "type": "text", "title": "YT-Downloader", "titleSize": 30, "body": "Youtubeの動画を早くダウンロードできます。 | Build by Electron" },
+            { "type": "button", "title": ".exeファイルをダウンロード | Google Drive", "color": "primary", "action": {"type": "link", "url": "https://drive.google.com/file/d/1xGAP61tSmNtGWXLVCQFG25W7prGSO9LF/view?usp=sharing"}}
           ]
         },
         {
