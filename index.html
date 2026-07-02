@@ -3,27 +3,963 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sky Project | Home</title>
+  <title>Sky Project</title>
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #FF6B35;
+      --orange-light: #FF8C42;
+      --orange-dark: #E85A2B;
+      --orange-glow: #FF9F5A;
+      --orange-gradient: linear-gradient(135deg, #FF6B35 0%, #FF8C42 50%, #FF9F5A 100%);
+      --orange-gradient-soft: linear-gradient(135deg, rgba(255, 107, 53, 0.8) 0%, rgba(255, 140, 66, 0.6) 100%);
+      --cream: #1A1A1A;
+      --charcoal: #F5F5F5;
+      --white: #2D2D2D;
+      --dark-bg: #0A0A0A;
+      --card-bg: rgba(30, 30, 30, 0.6);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --discord: #5865F2;
+    }
 
-  <!-- Discord埋め込み用 -->
-  <meta property="og:site_name" content="Sky Project">
-  <meta property="og:title" content="Sky Project | Home">
-  <meta property="og:description" content="空を超えて、新しい価値を">
-  <meta property="og:image" content="https://sky-project-web.vercel.app/sky.png">
-  <meta property="og:url" content="https://sky-project-web.vercel.app/index.html">
-  <meta property="og:type" content="website">
-  <meta name="theme-color" content="#FF7F00">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://sky-project-web.vercel.app/sky.png">
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--dark-bg);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 107, 53, 0.15), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(255, 140, 66, 0.08), transparent),
+        radial-gradient(ellipse 50% 30% at 20% 80%, rgba(255, 159, 90, 0.06), transparent);
+    }
 
-  <!-- ファビコン -->
-  <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+      z-index: 9999;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      padding: 1rem 4rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-family: 'Google Sans', 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--charcoal);
+      font-weight: 400;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Mobile Menu Button */
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .mobile-menu-btn span {
+      width: 25px;
+      height: 2px;
+      background: var(--charcoal);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 70%;
+      height: 140%;
+      background: var(--orange-gradient);
+      opacity: 0.15;
+      border-radius: 50%;
+      filter: blur(100px);
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    .hero-bg-2 {
+      position: absolute;
+      bottom: -30%;
+      left: -20%;
+      width: 60%;
+      height: 120%;
+      background: radial-gradient(ellipse at center, var(--orange-glow) 0%, var(--orange-light) 50%, transparent 70%);
+      opacity: 0.1;
+      border-radius: 50%;
+      filter: blur(120px);
+      animation: pulse 10s ease-in-out infinite reverse;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.15; }
+      50% { transform: scale(1.1); opacity: 0.2; }
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 900px;
+      z-index: 1;
+    }
+
+    .hero-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 2.5rem;
+      animation: float 6s ease-in-out infinite;
+      position: relative;
+    }
+
+    .hero-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.5));
+    }
+
+    .hero-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      background: var(--orange-gradient);
+      border-radius: 50%;
+      opacity: 0.2;
+      filter: blur(20px);
+      z-index: -1;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .hero h1 {
+      font-family: 'Google Sans', 'Outfit', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.3s forwards;
+      background: linear-gradient(135deg, var(--charcoal) 0%, var(--orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero h1 span {
+      background: var(--orange-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #999;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      font-weight: 300;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.5s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.7s forwards;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--orange-gradient);
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(255, 107, 53, 0.4),
+                  0 0 20px rgba(255, 107, 53, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(255, 107, 53, 0.5),
+                  0 0 30px rgba(255, 107, 53, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--charcoal);
+      border: 2px solid var(--charcoal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-secondary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--charcoal);
+      transition: width 0.3s ease;
+      z-index: -1;
+    }
+
+    .btn-secondary:hover::before {
+      width: 100%;
+    }
+
+    .btn-secondary:hover {
+      color: var(--dark-bg);
+      transform: translateY(-3px);
+    }
+
+    .btn-discord {
+      background: var(--discord);
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(88, 101, 242, 0.35);
+      font-size: 1.1rem;
+      padding: 1.2rem 3rem;
+    }
+
+    .btn-discord:hover {
+      background: #4752C4;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(88, 101, 242, 0.45);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* About Section */
+    .about {
+      padding: 8rem 4rem;
+      position: relative;
+    }
+
+    .section-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--orange);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .about h2 {
+      font-family: 'Google Sans', 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      max-width: 700px;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #aaa;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .stat {
+      padding: 2rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--orange-gradient);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .stat:hover::before {
+      transform: scaleX(1);
+    }
+
+    .stat:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+      border-color: rgba(255, 107, 53, 0.3);
+    }
+
+    .stat-number {
+      font-family: 'Google Sans', 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--orange);
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: #888;
+      margin-top: 0.5rem;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 8rem 4rem;
+      background: linear-gradient(180deg, var(--card-bg) 0%, var(--dark-bg) 100%);
+    }
+
+    .features-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 5rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      padding: 3rem 2rem;
+      border-radius: 24px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--orange-gradient);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(255, 107, 53, 0.3),
+                  0 0 40px rgba(255, 107, 53, 0.1);
+      border-color: rgba(255, 107, 53, 0.4);
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: var(--orange-gradient);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: rotateY(360deg);
+      box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
+    }
+
+    .feature-icon svg {
+      width: 40px;
+      height: 40px;
+      stroke: #fff;
+    }
+
+    .feature-card h3 {
+      font-family: 'Google Sans', 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card p {
+      color: #999;
+      line-height: 1.7;
+    }
+
+    /* Contact / Community Section */
+    .contact {
+      padding: 8rem 4rem;
+      text-align: center;
+      background: var(--dark-bg);
+    }
+
+    .contact h2 {
+      font-family: 'Google Sans', 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      color: var(--charcoal);
+    }
+
+    .contact p {
+      color: #888;
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 4rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--dark-bg);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-logo img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .footer-logo span {
+      font-family: 'Google Sans', 'Outfit', sans-serif;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      color: #888;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--orange);
+    }
+
+    /* Scroll Animation Classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      nav {
+        padding: 1rem 2rem;
+      }
+
+      .mobile-menu-btn {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-left: 1px solid var(--glass-border);
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 1.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+
+      .about, .features, .contact {
+        padding: 5rem 2rem;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+      }
+
+      .hero-icon {
+        width: 70px;
+        height: 70px;
+      }
+
+      .hero-icon::after {
+        width: 90px;
+        height: 90px;
+      }
+    }
+  </style>
 </head>
-<body style="margin:0;">
-  <div id="app" data-soraui-src="page.soraui"></div>
-  <script src="sora-ui.js"></script>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="icon.svg" alt="Sky Project">
+      <span class="logo-text">Sky Project</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#contact">Community</a></li>
+    </ul>
+    <div class="mobile-menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-bg-2"></div>
+    <div class="hero-content">
+      <div class="hero-icon">
+        <img src="icon.svg" alt="Sky Project Icon">
+      </div>
+      <h1>Sky <span>Project</span></h1>
+      <p>RobloxのScriptからウェブサイトまで様々な分野で活動しています。</p>
+      <div class="hero-cta">
+        <a href="product/index.html" class="btn btn-primary">私たちのプロダクトを見る</a>
+        <a href="#about" class="btn btn-secondary">詳しく見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="section-label reveal">About Us</div>
+    <h2 class="reveal">空を超えて、<br>新しい価値を</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>Sky Projectは、新しい体験と価値創造に取り組むプロジェクトです。空の広さのように、無限の可能性を信じて活動しています。</p>
+        <p>私たちは技術、デザイン、創造性を融合させ、人々の生活をより豊かにするソリューションを提供します。</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat reveal">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">プロジェクト</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">パートナー</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">情熱</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">可能性</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="features-header">
+      <div class="section-label reveal">Features</div>
+      <h2 class="reveal">私たちの強み</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+          </svg>
+        </div>
+        <h3>スピード</h3>
+        <p>迅速かつ効率的なアプローチで、アイデアを素早く形にします。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+          </svg>
+        </div>
+        <h3>デザイン</h3>
+        <p>美しさと機能性を兼ね備えた、記憶に残るデザインを提供します。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+          </svg>
+        </div>
+        <h3>迅速なサポート</h3>
+        <p>迅速なサポートしっかりとした対応を提供します。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="section-label reveal">Community</div>
+    <h2 class="reveal">コミュニティへ参加</h2>
+    <p class="reveal">Sky Projectのコミュニティに参加して、最新情報や他のメンバーと交流しましょう。</p>
+    <div class="reveal">
+      <a href="https://discord.gg/ZxBS4rW3qs" target="_blank" rel="noopener noreferrer" class="btn btn-discord">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+        </svg>
+        Discordに参加
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="icon.svg" alt="Sky Project">
+      <span>Sky Project</span>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#contact">Community</a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-triggered animations
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+      const elementVisible = 150;
+
+      revealElements.forEach((element) => {
+        const elementTop = element.getBoundingClientRect().top;
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // Navigation scroll effect
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenuBtn.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Particle effect for hero section
+    const createParticle = () => {
+      const hero = document.querySelector('.hero');
+      const particle = document.createElement('div');
+      particle.style.cssText = `
+        position: absolute;
+        width: ${Math.random() * 4 + 2}px;
+        height: ${Math.random() * 4 + 2}px;
+        background: var(--orange);
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: ${Math.random() * 0.5 + 0.2};
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        animation: floatParticle ${Math.random() * 10 + 10}s linear infinite;
+      `;
+      hero.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 20000);
+    };
+
+    // Add particle animation to CSS
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes floatParticle {
+        0% {
+          transform: translateY(0) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.5;
+        }
+        90% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Create particles periodically
+    setInterval(createParticle, 500);
+
+    // Initial particles
+    for (let i = 0; i < 20; i++) {
+      setTimeout(createParticle, i * 100);
+    }
+  </script>
 </body>
 </html>
